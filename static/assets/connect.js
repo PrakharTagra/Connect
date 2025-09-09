@@ -72,3 +72,43 @@ document.addEventListener("DOMContentLoaded", () => {
         alert('An error occurred during login');
       }
     }
+async function sendMsg() {
+  let inp = document.getElementById("msg");
+  let text = inp.value;
+  if (!text) return;
+
+  let chat = document.getElementById("chat");
+  chat.innerHTML += `<div style="text-align:right;"><b>You:</b> ${text}</div>`;
+  inp.value = "";
+
+  // Send message to general chatbot API
+  let resp = await fetch("/api/chat", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({message: text})
+  });
+
+  let data = await resp.json();
+  chat.innerHTML += `<div style="text-align:left;"><b>Lynq:</b> ${data.reply}</div>`;
+  chat.scrollTop = chat.scrollHeight;}
+
+async function doSearch() {
+      let q = document.getElementById("query").value;
+      let resp = await fetch("/search?q=" + encodeURIComponent(q));
+      let data = await resp.json();
+      let cont = document.getElementById("results");
+      cont.innerHTML = "";
+      for (let r of data.results) {
+        let div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `
+          <h3>${r.name} ${r.domain_emoji}</h3>
+          <p><b>Domain:</b> ${r.domain}</p>
+          <p><b>Grad Year:</b> ${r.grad_year}, <b>Exp:</b> ${r.exp} yrs</p>
+          <p><b>Company:</b> ${r.company}</p>
+          <p class="badges">${r.ach_badges}</p>
+          <a href="/profile/${r.id}">View Profile →</a>
+        `;
+        cont.appendChild(div);
+      }
+    }
