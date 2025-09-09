@@ -21,13 +21,11 @@
     <h1>{{ alum.Name }} {{ get_domain_emoji(alum.Domain) }}</h1>
     <p>{{ alum.Current_Position }} | Grad Year: {{ alum.Graduation_Year }} | Exp: {{ alum.Years_of_Experience }} yrs</p>
   </header>
-
   <div class="container">
     <div class="section">
       <h2>Bio</h2>
       <p>{{ bio }}</p>
     </div>
-
     <div class="section">
       <h2>Details</h2>
       <p><b>Domain:</b> {{ alum.Domain }}</p>
@@ -38,9 +36,8 @@
       <p><b>Instagram:</b> {{ alum.Instagram }}</p>
       <p><b>X:</b> {{ alum.X_handle }}</p>
     </div>
-
     <div class="section">
-      <h2>Chat with Alumni Bot 🤖</h2>
+      <h2>LYNQ</h2>
       <div id="chat" class="chat-box"></div>
       <div class="chat-input">
         <input id="msg" placeholder="Ask something...">
@@ -48,7 +45,6 @@
       </div>
     </div>
   </div>
-
   <script>
     async function sendMsg() {
       let inp = document.getElementById("msg");

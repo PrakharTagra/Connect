@@ -1,49 +1,596 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Alumni Search Portal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { font-family: "Segoe UI", sans-serif; background: #f7f7ff; margin: 0; }
-    header { background: linear-gradient(90deg, #4b6cb7, #182848); color: white; padding: 1rem; text-align: center; }
-    h1 { margin: 0; font-size: 1.8rem; }
-    .search-box { text-align: center; padding: 1rem; }
-    input { padding: 0.5rem; font-size: 1rem; width: 60%; border-radius: 8px; border: 1px solid #ccc; }
-    button { padding: 0.6rem 1.2rem; font-size: 1rem; margin-left: 0.5rem; border: none; border-radius: 8px; background: #4b6cb7; color: white; cursor: pointer; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; padding: 1rem; }
-    .card { background: white; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); padding: 1rem; transition: transform 0.2s; }
-    .card:hover { transform: translateY(-4px); }
-    .badges { font-size: 1.2rem; }
-    footer { text-align: center; padding: 1rem; background: #eee; font-size: 0.9rem; }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Connect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="Title-Logo.png " type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Merriweather&family=Playfair+Display&display=swap"
+      rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../assets/index.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mada:wght@200..900&display=swap" rel="stylesheet">
 </head>
+<style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;500;600;700&display=swap');
+    .source-code-pro-body {
+        font-family: "Source Code Pro", monospace;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        font-style: normal;
+    }
+    .cedarville-cursive-regular {
+        font-family: "Cedarville Cursive", cursive;
+        font-weight: 400;
+        font-style: normal;
+    } 
+    .dancing-script-hero-header2 {
+        font-family: "Dancing Script", cursive;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        font-style: normal;
+    }
+    html,body{
+        scroll-behavior: smooth;
+        font-family: "Mada", sans-serif;
+    }
+    #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        background-color: transparent;
+        pointer-events: none;
+    }
+    body{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #fdfaf4;
+    }
+    main{
+        padding-top: 12vh;
+    }
+    a{
+        text-decoration: none;
+    }
+    a:visited,
+    a:link {
+        color: black;
+    }
+    .particles-js {
+        width: 100%;
+        height: 100%;
+    }
+    .nav-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 2%;
+        box-sizing: border-box;
+        background-color: #333333;
+        height: 12vh;
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+    }
+    .nav-logo {
+        display: flex;
+        align-items: center;
+        width: 30vw;
+        overflow: hidden;
+    }
+    .nav-header {
+        font-size: 1.8rem;
+        font-weight: bold;
+        font-family: "Tagesschrift", system-ui;
+    }
+    .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 70vw;
+    }
+    .connect-logo {
+        width: 15rem;
+        height: 10rem;
+    }
+    .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #fdfaf4;
+        font-size: 1.3rem;
+        width: 35vw;
+        padding-left: 7vw;
+        gap: 1vw;
+    }
+    .nav-links a {
+        color: rgb(17, 16, 16);
+        text-decoration: none;
+        font-size: 1.3rem;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .nav-links a:hover {
+        color: white;
+        transform: scale(1.1);
+    }
+    .nav-buttons {
+        display: flex;
+        align-items: center;
+        width: 35vw;
+        justify-content: end;
+        gap: 2%;
+    }
+    .htext{
+        font-size: 0.9rem;
+        margin-top: 5%;
+    }
+    .i{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .Premium {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        border: none;
+        background-color: gold;
+        padding: 0.5rem 1.2rem;
+        border-radius: 30px;
+        color: black;
+        font-weight: bold;
+        font-size: 1rem;
+        cursor: pointer;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        transition: transform 0.3s ease;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    }
+    .Premium:hover {
+        transform: scale(1.05);
+    }
+    .Premium::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.5);
+        transform: skewX(-20deg);
+        transition: left 0.5s;
+    }
+    .Premium:hover::before {
+        left: 130%;
+    }
+    .crown-icon {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+    }
+    .Login,
+    .SignUp {
+        border: none;
+        background-color: rgb(104, 169, 204);
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        color: black;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .Login:hover,
+    .SignUp:hover {
+        background-color: white;
+        transform: scale(1.1);
+    }
+    i:hover{
+        transform: scale(1.2);
+    }
+    @media screen and (max-width:1200px) {
+        .nav-section {
+            flex-direction: column;
+        }
+    }
+    @media screen and (max-width:950px) {
+        .nav-section {
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .nav-container {
+            flex-direction: column;
+        }
+        .smartphone {
+            display: none;
+        }
+    }
+    .heromain{
+        display: flex;
+        height: auto;
+        width: 98vw;
+        justify-content: space-between;
+        box-sizing: border-box;
+    }
+    .heroleft{
+        width: 20vw;
+        background-color: #fdfaf4;
+        position: sticky;
+        margin-left: 0;
+        top: 12vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: fit-content;
+    }
+    .heroright{
+        width: 20vw;
+        background-color: #fdfaf4;
+        position: sticky;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        top: 12vh;
+        align-items: center;
+        height: fit-content;
+    }
+    .herocenter{
+        width: 60%;
+        padding: 1%;
+    }
+    @keyframes bounceIn {
+        0% {
+            opacity: 0;
+            transform: translateY(-50px);
+        }
+        60% {
+            opacity: 1;
+            transform: translateY(10px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .about-connect {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 60vw;
+    }
+    .abouthead,.domainhead,.visionhead{
+        font-size: 3rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .feature-section{
+        text-align: center;
+    }
+    .feature-content{
+        width: 60vw;
+        display: flex;
+    }
+    .feature1,.feature2{
+        display: flex;
+        flex-direction: column;
+    }
+    .about-grid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2%;
+    }
+    .about-box {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 15px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        backdrop-filter: blur(6px);
+        cursor: default;
+        font-weight: 500;
+        width: 25vw;
+        text-align: center;
+        background-color: #dfebe4;
+        margin-bottom: 5%;
+    }
+    .about-box:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        background: rgba(255, 255, 255, 0.1);
+    }
+    .card:hover{
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-8px);
+    }
+    .card{
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+        width: 20vw;
+        background-color: #dfebe4;
+        padding: 3vw;
+        height: 30vh;
+        margin: 2vw;
+        border-radius: 20px;
+    }
+    .card img{
+        width: 5vw;
+    }
+    .vision{
+        text-align: center;
+        width: 55vw;
+        background-color: #dfebe4;
+        margin: 1vw;
+        border-radius: 20px;
+        padding: 2%;
+    }
+    .div1{
+        height: 25vh;
+        border-radius: 20px;
+        background-color: white;
+        width: 16vw;
+        border: 1px solid black;
+        margin: 5%;
+    }
+    .div1{
+        height: 25vh;
+        border-radius: 20px;
+        background-color: white;
+        width: 16vw;
+        border: 1px solid black;
+        margin: 5%;
+    }
+    .div2{
+        height: 54vh;
+        border-radius: 20px;
+        background-color: white;
+        width: 16vw;
+        border: 1px solid black;
+        margin: 5%;
+    }
+    footer {
+      background-color: #2e2e2e;
+      color: #fdfaf4;
+      padding: 40px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    footer .footer-section {
+      flex: 1 1 200px;
+      margin: 10px 20px;
+      display: flex;
+      flex-direction: column;
+      padding-left: 10%;
+    }
+    footer .footer-section h4 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #ffcc80;
+    }
+    footer .footer-section p,
+    footer .footer-section a {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #fdfaf4;
+      text-decoration: none;
+    }
+    footer .footer-section a:hover {
+      color: #ffcc80;
+      text-decoration: underline;
+    }
+    footer .footer-section:last-child {
+      text-align: center;
+      flex-basis: 100%;
+      margin-top: 20px;
+      font-size: 13px;
+      border-top: 1px solid #555;
+      padding-top: 10px;
+    }
+    .section { background: white; margin: 1rem 0; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); width: 200px;}
+        .chat-box { background: #fff; border: 1px solid #ccc; padding: 0.5rem; height: 210px; overflow-y: auto; border-radius: 8px;}
+        .chat-input { display: flex; margin-top: 0.5rem;width: 200px;}
+        .chat-input input { flex: 1; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px; width: 120px;}
+        .chat-input button { margin-left: 0.5rem; padding: 0.1rem 0.1rem; border: none; border-radius: 8px; background: #4b6cb7; color: white; cursor: pointer;width: 50px;}
+</style>
 <body>
-  <header>
-    <h1>🎓 Alumni Search Portal</h1>
-    <p>Find alumni by name, domain, skills, achievements, year or experience</p>
-  </header>
-
-  <div class="search-box">
-    <input type="text" id="query" placeholder="Search alumni (e.g. AI, >5, 2020, Startup)...">
-    <button onclick="doSearch()">Search</button>
-  </div>
-
-  <div id="results" class="grid">
-    {% for r in cards %}
-      <div class="card">
-        <h3>{{r.Name}} {{ get_domain_emoji(r.Domain) }}</h3>
-        <p><b>Domain:</b> {{r.Domain}}</p>
-        <p><b>Grad Year:</b> {{r.Graduation_Year}}, <b>Exp:</b> {{r.Years_of_Experience}} yrs</p>
-        <p><b>Company:</b> {{r.Current_Position}}</p>
-        <p class="badges">{{ achievement_badges(r.Achievements) }}</p>
-        <a href="/profile/{{r.id}}">View Profile →</a>
+  <div id="particles-js"></div>
+<div>
+  <nav class="nav-section">
+    <div class="nav-logo">
+      <img src="../assets/Images/Logo.png" alt="Logo" class="connect-logo"/>
+    </div>
+    <div class="nav-container">
+      <div class="nav-links">
+          <div class="home i">
+            <div><i class="fa-solid fa-house"></i></div>
+            <div class="htext">Home</div>
+          </div>
+          <div class="search i">
+            <div><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div class="htext">Search</div>
+          </div>
+          <div class="connections i">
+            <div><i class="fa-solid fa-user-group"></i></div>
+            <div class="htext">Connections</div>
+          </div>
+          <div class="noti i">
+            <div><i class="fa-solid fa-bell"></i></div>
+            <div class="htext">Notifications</div>
+          </div>
+          <div class="msg i">
+            <div><i class="fa-solid fa-comment"></i></div>
+            <div class="htext">Messages</div>
+          </div>
       </div>
-    {% endfor %}
-  </div>
-
-  <footer>Sampled from {{ sample_count }} alumni records 📊</footer>
-
+      <div class="nav-buttons">
+        <button class="Premium">
+          <img src="../assets/Images/premium-icon.png" alt="Crown" class="crown-icon">
+          Premium
+        </button>
+        <a href="../assets/Login.html"><button class="Login">Login</button></a>
+        <a href="../assets/Signup.html"><button class="SignUp">Sign Up</button></a>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <div class="heromain">
+      <div class="heroleft">
+        <div class="div1"></div>
+        <div class="div1"></div>
+        <div class="div1"></div>
+      </div>
+      <div class="herocenter">
+        <section class="about-connect" id="about-connect">
+          <h2 class="abouthead">What is Connect?</h2>
+          <div class="about-grid">
+          <div class="about1">
+            <div class="about-box">A platform that bridges the gap between students and alumni.</div>
+            <div class="about-box">Built to support mentorship, opportunities, and meaningful conversations.</div>
+            <div class="about-box">Helps students find guidance, internships, and career inspiration.</div>
+          </div>
+          <div class="about2">
+            <div class="about-box">Empowers alumni to reconnect, share experiences, and discover talent.</div>
+            <div class="about-box">Ensures that every story and skill is heard, shared, and valued.</div>
+            <div class="about-box">Fosters a network where growth, support, and giving go hand in hand.</div>
+          </div>
+          </div>
+        </section>
+        <section class="feature-section" id="feature1">
+          <h2 class="domainhead">Domains</h2>
+          <div class="feature-content">
+            <div class="feature1">
+              <div class="card">
+                <a href="../assets/main.html" class="feature1-anchor">
+                  <img src="../assets/InnovativeTech.svg" alt="icon" /><b>
+                  <p><a href="../assets/main.html" class="feature1-anchor-para">Engineering</a></p>
+                  <p>Connect with professionals in core and software branches, and explore emerging tech like AI and IoT.</p></b>
+                </a>
+              </div>
+              <div class="card">
+                <a href="../assets/main.html" class="feature1-anchor">
+                  <img src="../assets/InnovativeTech.svg" alt="icon" /><b>
+                  <p><a href="../assets/main.html" class="feature1-anchor">Design</a></p>
+                  <p><a href="../assets/main.html" class="feature1-anchor">Dive into UI/UX, graphic, and product design by learning from experts working in top design agencies.</a></p></b>
+                </a>
+              </div>
+              <div class="card">
+                <a href="../assets/main.html" class="feature1-anchor">
+                  <img src="../assets/InnovativeTech.svg" alt="icon" /><b>
+                  <p>Marketing</p>
+                  <p>Gain insights from marketers in branding, digital strategy, SEO, and consumer engagement campaigns.</p></b>
+                </a>
+              </div>
+              <div class="card">
+                <a href="../assets/main.html" class="feature1-anchor">
+                  <img src="../assets/InnovativeTech.svg" alt="icon" /><b>
+                  <p><a href="../assets/main.html" class="feature1-anchor">Research</a></p>
+                  <p><a href="../assets/main.html" class="feature1-anchor">Collaborate with alumni involved in academic and industrial research, grants, and global publications.
+                  </a></p></b>
+                </a>
+              </div>
+            </div>
+            <div class="feature2">
+              <div class="card">
+                <a href="../assets/main.html" class="feature1-anchor">
+                  <img src="../assets/InnovativeTech.svg" alt="icon" /><b>
+                  <p><a href="../assets/main.html" class="feature1-anchor">Analytics</a></p>
+                  <p><a href="../assets/main.html" class="feature1-anchor"><a href="main.html" class="feature1-anchor">Explore careers in data science, machine learning, and business intelligence with real project stories.
+                  </a></p></b>
+                </a>
+              </div>
+              <div class="card">
+                <a href="../assets/main.html" class="feature1-anchor">
+                  <img src="../assets/InnovativeTech.svg" alt="icon" /><b>
+                  <p><a href="../assets/main.html" class="feature1-anchor">Support</a></p>
+                  <p><a href="../assets/main.html" class="feature1-anchor">Engage with mentors in technical and customer support who ensure seamless digital experiences.</a></p></b>
+                </a>
+              </div>
+              <div class="card">
+                <a href="../assets/main.html" class="feature1-anchor">
+                  <img src="../assets/InnovativeTech.svg" alt="icon" /><b>
+                  <p><a href="../assets/main.html" class="feature1-anchor">Content</a></p>
+                  <p><a href="../assets/main.html" class="feature1-anchor">Learn how creators write, edit, and publish engaging blogs, scripts, and educational resources.</a></p></b>
+                </a>
+              </div>
+              <div class="card">
+                <a href="../assets/main.html" class="feature1-anchor">
+                  <img src="../assets/InnovativeTech.svg" alt="icon" /><b>
+                  <p><a href="../assets/main.html" class="feature1-anchor">Operations</a></p>
+                  <p><a href="../assets/main.html" class="feature1-anchor">Understand operational strategies from alumni working in logistics, HR, and business execution roles.</a></p></b>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="vision">
+          <h2 class="visionhead">Our Vision</h2>
+          <p class="visionpara">A future where learning is limitless, mentors are celebrated, and every project, contest, and connection shapes who you become.
+            Where skills speak louder than scores, and innovation isn't just taught — it's lived.
+            A space where guidance meets growth, and students and mentors rise together.
+            This is more than a platform — it's a launchpad for tomorrow's changemakers.</p>
+        </div>
+      </div>
+      <div class="heroright">
+        <div class="div1"></div>
+        <div id="chat-container">
+        <div class="section">
+          <h2>LYNQ</h2>
+          <div id="chat" class="chat-box"></div>
+            <div class="chat-input">
+              <input id="msg" placeholder="Ask something...">
+              <button onclick="sendMsg()">Send</button>
+            </div>
+        </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </main>
+    <footer id="contact">
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p>Email: contact@connect.com</p>
+        <p>Phone: +123 456 7890</p>
+      </div>
+      <div class="footer-section" id="about">
+        <h4>About Us</h4>
+        <p>Connect is focused on connecting opportunities with talent.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Help Center</a>
+      </div>
+      <div class="footer-section">
+        <p>&copy; 2025 Connect. All rights reserved.</p>
+      </div>
+  </footer>
+  <script src="https://kit.fontawesome.com/18816f1d95.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src = "./assets/connect.js"></script>
   <script>
     async function doSearch() {
       let q = document.getElementById("query").value;
@@ -66,5 +613,28 @@
       }
     }
   </script>
+  <script>
+      async function sendMsg() {
+  let inp = document.getElementById("msg");
+  let text = inp.value;
+  if (!text) return;
+
+  let chat = document.getElementById("chat");
+  chat.innerHTML += `<div style="text-align:right;"><b>You:</b> ${text}</div>`;
+  inp.value = "";
+
+  // Send message to general chatbot API
+  let resp = await fetch("/api/chat", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({message: text})
+  });
+
+  let data = await resp.json();
+  chat.innerHTML += `<div style="text-align:left;"><b>Lynq:</b> ${data.reply}</div>`;
+  chat.scrollTop = chat.scrollHeight;
+}
+  </script>
+</div>
 </body>
 </html>
