@@ -73,24 +73,38 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 async function sendMsg() {
-  let inp = document.getElementById("msg");
-  let text = inp.value;
-  if (!text) return;
+    let inp = document.getElementById("msg");
+    let text = inp.value.trim();
+    if (!text) return;
 
-  let chat = document.getElementById("chat");
-  chat.innerHTML += `<div style="text-align:right;"><b>You:</b> ${text}</div>`;
-  inp.value = "";
+    let chat = document.getElementById("chat");
+    chat.innerHTML += `<div style="text-align:right;"><b>You:</b> ${text}</div>`;
+    inp.value = "";
+    chat.scrollTop = chat.scrollHeight;
 
-  // Send message to general chatbot API
-  let resp = await fetch("/api/chat", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({message: text})
-  });
+    try {
+        let resp = await fetch("/api/chat", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({message: text})
+        });
 
-  let data = await resp.json();
-  chat.innerHTML += `<div style="text-align:left;"><b>Lynq:</b> ${data.reply}</div>`;
-  chat.scrollTop = chat.scrollHeight;}
+        if (!resp.ok) throw new Error("API response error");
+
+        let data = await resp.json();
+        chat.innerHTML += `<div style="text-align:left;"><b>Lynq:</b> ${data.reply}</div>`;
+        chat.scrollTop = chat.scrollHeight;
+    } catch (err) {
+        chat.innerHTML += `<div style="color:red; text-align:left;"><b>Lynq:</b> Sorry, something went wrong. Try again.</div>`;
+        chat.scrollTop = chat.scrollHeight;
+        console.error(err);
+    }
+}
+
+document.getElementById("msg").addEventListener("keypress", function(e) {
+    if (e.key === "Enter") sendMsg();
+});
+
 
 async function doSearch() {
       let q = document.getElementById("query").value;

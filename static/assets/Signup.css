@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Segoe+UI:wght@400&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Segoe+UI:wght@400&display=swap');
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body, html {
       height: 100%;
       font-family: 'Segoe UI', sans-serif;
@@ -17,10 +16,10 @@
       justify-content: center;
       align-items: center;
     }
-
     .container {
       display: flex;
       flex-direction: row;
+      height: 80vh;
       width: 900px;
       max-width: 95%;
       background: rgba(255, 255, 255, 0.07);
@@ -56,8 +55,6 @@
   white-space: nowrap;
   pointer-events: none;
 }
-
-
     .form-container {
       width: 60%;
       padding: 30px 30px;
@@ -167,4 +164,126 @@
     
     .role-dropdown::-ms-expand {
       display: none; /* Hide the default dropdown arrow in IE */
+/* Fonts & Reset */
+/* Import same font as homepage */
+/* Import same font as homepage */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Mada", sans-serif;
+    background-color: #fdfaf4;
+    overflow: hidden;
+}
+
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.container {
+    display: flex;
+    height: 90vh; /* reduce height to leave 5vh top and bottom */
+    width: 100%;
+    margin: 5vh 0; /* 5vh margin top and bottom */
+}
+
+/* Left column - Logo */
+.logo-side {
+    flex: 1;
+    background: linear-gradient(135deg, #00ffff, #005f6b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-text {
+    font-family: "Cedarville Cursive", cursive;
+    font-size: 2.5rem; /* slightly smaller */
+    color: #ffffff;
+}
+
+/* Right column - Form */
+.form-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px; /* slightly smaller padding */
+    background-color: #dfebe4;
+}
+
+.form-container h2 {
+    font-family: "Dancing Script", cursive;
+    font-size: 2rem; /* reduced font size */
+    color: #00ffff;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 15px; /* reduced spacing */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem; /* smaller labels */
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px 12px; /* slightly smaller */
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    background-color: #fdfaf4;
+    font-size: 0.9rem; /* smaller font */
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #00ffff;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px; /* smaller button */
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem; /* smaller font */
+    cursor: pointer;
+    background: linear-gradient(135deg, #00ffff, #005f6b);
+    color: #0b0c10;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(135deg, #005f6b, #00ffff);
+    color: #fff;
+}
+
+/* Responsive - stack columns for small screens */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        height: 90vh;
+        margin: 5vh 0;
     }
+
+    .logo-side, .form-container {
+        flex: unset;
+        height: 50%;
+    }
+}
