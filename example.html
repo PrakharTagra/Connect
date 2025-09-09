@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Submit Doubt</title>
+</head>
+<body>
+  <h1>Ask a Doubt</h1>
+  <form id="doubtForm">
+    <input type="text" id="studentName" placeholder="Your Name" required />
+    <input type="text" id="question" placeholder="Your Question" required />
+    <button type="submit">Submit</button>
+  </form>
+
+  <h2>All Doubts</h2>
+  <ul id="doubtList"></ul>
+
+  <script>
+    // Submit a new doubt
+    document.getElementById('doubtForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const studentName = document.getElementById('studentName').value;
+      const question = document.getElementById('question').value;
+
+      const response = await fetch('http://localhost:5500/doubts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ studentName, question })
+      });
+
+      const result = await response.json();
+      alert('Doubt submitted!');
+      loadDoubts(); 
+    });
+
+  
+    async function loadDoubts() {
+      const res = await fetch('http://localhost:5500/doubts');
+      const doubts = await res.json();
+
+      const list = document.getElementById('doubtList');
+      list.innerHTML = ''; 
+      doubts.forEach(d => {
+        const li = document.createElement('li');
+        li.innerText = `${d.studentName}: ${d.question}`;
+
+        list.appendChild(li);
+      });
+    }
+
+  
+    loadDoubts();
+  </script>
+</body>
+</html>

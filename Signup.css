@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Segoe+UI:wght@400&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      background-image: url('endless-constellation.png');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      width: 900px;
+      max-width: 95%;
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(5px);
+      border:0px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0px;
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      position: absolute;
+    }
+
+   
+.logo-side {
+  width: 25%;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-text {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-30%, -50%) rotate(-90deg); 
+  font-size: 108px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  color: #ffffff6c;
+  text-shadow: 25px 25px 10px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+
+    .form-container {
+      width: 60%;
+      padding: 30px 30px;
+      color: #e4e9f0;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      color: #cdd6e2;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #506b8b;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #bbb;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #66aaff;
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 0 2px rgba(102, 170, 255, 0.2);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #3b82f6;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #2563eb;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .logo-side {
+        width: 100%;
+        padding: 10px;
+      }
+      .form-container {
+        width: 100%;
+      }
+      .vertical-text {
+        writing-mode: horizontal-tb;
+        text-align: bottom;
+        font-size: 200px;
+        margin-bottom: 20px;
+      }
+    }
+    .role-dropdown {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #506b8b;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 14px;
+      font-family: 'Segoe UI', sans-serif;
+      appearance: none;
+      cursor: pointer;
+    }
+    
+    .role-dropdown:focus {
+      outline: none;
+      border-color: #66aaff;
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 0 2px rgba(102, 170, 255, 0.2);
+    }
+    
+    .role-dropdown option {
+      background: #2c3e50;
+      color: #fff;
+    }
+    
+    
+    .role-dropdown::-ms-expand {
+      display: none; /* Hide the default dropdown arrow in IE */
+    }
