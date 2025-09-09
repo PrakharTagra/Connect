@@ -5,20 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>User Profile Page</title>
   <style>
-    /* Reset and Base Styles */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-
     body {
       font-family: Arial, sans-serif;
       background-color: #e0e0e0;
       padding: 40px; /* Space on all four sides */
     }
-
-    /* Navigation Bar */
     .navbar {
       display: flex;
       align-items: center;
@@ -27,14 +23,12 @@
       border-radius: 8px;
       margin-bottom: 20px;
     }
-
     .navbar .logo {
       color: #fff;
       font-size: 24px;
       font-weight: bold;
       margin-right: auto;
     }
-
     .navbar a {
       color: #fff;
       text-decoration: none;
@@ -43,25 +37,20 @@
       border-radius: 4px;
       transition: background-color 0.3s;
     }
-
     .navbar a:hover {
       background-color: #575757;
     }
-
-    /* Search Bar */
     .search-bar {
       position: relative;
       max-width: 600px;
       margin: 0 auto 30px auto;
     }
-
     .search-bar input[type="text"] {
       width: 100%;
       padding: 12px 16px;
       border: 1px solid #ccc;
       border-radius: 4px;
     }
-
     .search-bar .dropdown {
       position: absolute;
       top: 100%;
@@ -74,23 +63,18 @@
       display: none;
       z-index: 1000;
     }
-
     .search-bar:hover .dropdown {
       display: block;
     }
-
     .search-bar .dropdown a {
       display: block;
       padding: 10px 16px;
       color: #333;
       text-decoration: none;
     }
-
     .search-bar .dropdown a:hover {
       background-color: #f0f0f0;
     }
-
-    /* Profile Container */
     .profile-container {
       max-width: 960px;
       margin: 0 auto;
@@ -99,8 +83,6 @@
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
-    /* Cover Photo */
     .cover-photo {
       position: relative;
       height: 250px;
@@ -109,8 +91,6 @@
       background-position: center;
       border-radius: 8px 8px 0 0;
     }
-
-    /* Profile Picture */
     .profile-picture {
       position: absolute;
       bottom: -50px;
@@ -123,36 +103,28 @@
       background-size: cover;
       background-position: center;
     }
-
-    /* Profile Info */
     .profile-info {
       margin-top: 60px;
       padding: 20px;
     }
-
     .name-domain {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-
     .name-domain h1 {
       margin: 0;
     }
-
     .details {
       margin-top: 10px;
       color: #555;
     }
-
-    /* Stats */
     .stats {
       display: flex;
       gap: 20px;
       flex-wrap: wrap;
       margin-top: 20px;
     }
-
     .stat {
       flex: 1;
       min-width: 150px;
@@ -161,8 +133,6 @@
       border-radius: 6px;
       text-align: center;
     }
-
-    /* Sections */
     .section {
       background-color: #fff;
       margin: 20px 0;
@@ -170,41 +140,33 @@
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
-
     .section h2 {
       margin-top: 0;
       margin-bottom: 15px;
       color: #333;
     }
-
     .section ul {
       list-style: none;
       padding: 0;
     }
-
     .section li {
       background-color: #eaeaea;
       margin: 8px 0;
       padding: 10px;
       border-radius: 4px;
     }
-
-    /* Links */
     .links a {
       display: inline-block;
       margin-right: 10px;
       color: #0073b1;
       text-decoration: none;
     }
-
     .links a:hover {
       text-decoration: underline;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation Bar -->
   <div class="navbar">
     <div class="logo">MyLogo</div>
     <a href="#">Home</a>
@@ -212,8 +174,6 @@
     <a href="#">Services</a>
     <a href="#">Contact</a>
   </div>
-
-  <!-- Search Bar -->
   <div class="search-bar">
     <input type="text" placeholder="Search...">
         <button type="submit" class="search-button">
@@ -227,16 +187,10 @@
       <a href="#">Company</a>
     </div>
   </div>
-
-  <!-- Profile Container -->
   <div class="profile-container">
-    <!-- Cover Photo -->
     <div class="cover-photo">
-      <!-- Profile Picture -->
       <div class="profile-picture"></div>
     </div>
-
-    <!-- Profile Info -->
     <div class="profile-info">
       <div class="name-domain">
         <h1>John Doe</h1>
@@ -246,8 +200,6 @@
         <p>Connections: 150</p>
         <p>Email: john.doe@example.com</p>
       </div>
-
-      <!-- About Section -->
       <div class="section">
         <h2>About</h2>
         <p>Graduated from ABC University in 2020 with a Bachelor's in Computer Science. Completed Master's in Data Science from XYZ Institute in 2022. Based in New York City.</p>
@@ -259,6 +211,5 @@
       </div>
     </div>
   </div>
-
 </body>
 </html>

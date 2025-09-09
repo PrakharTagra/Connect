@@ -335,7 +335,7 @@ i:hover{
     margin: 5%;
 }
 .div2{
-    height: 50vh;
+    height: 54vh;
     border-radius: 20px;
     background-color: white;
     width: 16vw;
@@ -354,6 +354,9 @@ footer {
 footer .footer-section {
   flex: 1 1 200px;
   margin: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10%;
 }
 footer .footer-section h4 {
   font-size: 18px;
