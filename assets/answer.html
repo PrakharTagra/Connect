@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Doubts - Mentor Community</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    .navbar {
+      height: 60px;
+      background-color: #007b5e;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+      color: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+    }
+
+    .navbar .left,
+    .navbar .right {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar .left .menu-icon {
+      font-size: 24px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .navbar .center-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #fff;
+      border-right: 1px solid #ccc;
+      height: 100vh;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      padding-top: 20px;
+      transition: transform 0.3s ease;
+      z-index: 998;
+    }
+
+    .sidebar.hidden {
+      transform: translateX(-100%);
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      padding: 15px;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
+    }
+
+    .main-content {
+      margin-top: 60px;
+      padding: 20px;
+      margin-left: 250px;
+      transition: margin-left 0.3s ease;
+    }
+
+    .main-content.full-width {
+      margin-left: 0;
+    }
+
+    .doubt-box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .doubt-question {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .doubt-answer {
+      margin-bottom: 15px;
+    }
+
+    .vote-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .vote-buttons i {
+      font-size: 20px;
+      cursor: pointer;
+      color: #888;
+    }
+
+    .vote-buttons i.active {
+      color: #007b5e;
+    }
+  </style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="left">
+      <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+    </div>
+    <div class="center-title">My Doubts</div>
+    <div class="right">
+      <i class="fas fa-user-circle" style="font-size: 24px;"></i>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <ul>
+      <li>Home Page</li>
+      <li>Search</li>
+      <li>Doubts</li>
+      <li>My Profile</li>
+      <li>Logout</li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content" id="mainContent">
+    <!-- Example Doubt 1 -->
+    <div class="doubt-box">
+      <div class="doubt-question">Q: What is the difference between supervised and unsupervised learning?</div>
+      <div class="doubt-answer">A: Supervised learning uses labeled data to train models, while unsupervised learning finds hidden patterns in data without labels.</div>
+      <div class="vote-buttons">
+        <i class="fas fa-thumbs-up" onclick="toggleVote(this)"></i>
+        <i class="fas fa-thumbs-down" onclick="toggleVote(this)"></i>
+      </div>
+    </div>
+
+    <!-- Example Doubt 2 -->
+    <div class="doubt-box">
+      <div class="doubt-question">Q: How does event delegation work in JavaScript?</div>
+      <div class="doubt-answer">A: Event delegation allows a parent element to handle events for its children using event bubbling, reducing the number of event listeners.</div>
+      <div class="vote-buttons">
+        <i class="fas fa-thumbs-up" onclick="toggleVote(this)"></i>
+        <i class="fas fa-thumbs-down" onclick="toggleVote(this)"></i>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const mainContent = document.getElementById('mainContent');
+      sidebar.classList.toggle('hidden');
+      mainContent.classList.toggle('full-width');
+    }
+
+    function toggleVote(element) {
+      const parent = element.parentElement;
+      const buttons = parent.querySelectorAll('i');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      element.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>

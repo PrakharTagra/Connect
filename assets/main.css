@@ -1,0 +1,484 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;500;600;700&display=swap');
+
+
+.source-code-pro-body {
+    font-family: "Source Code Pro", monospace;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Tagesschrift", system-ui;
+    /* background: #131345;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%); */
+    background-size: 100% 100%;
+    background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+    background-image: radial-gradient(18% 28% at 24% 50%, rgb(143, 159, 160) 7%, #073AFF00 100%), radial-gradient(18% 28% at 18% 71%, #FFFFFF59 6%, #073AFF00 100%), radial-gradient(70% 53% at 36% 76%, #73F2FFFF 0%, #073AFF00 100%), radial-gradient(42% 53% at 15% 94%, #FFFFFFFF 7%, #073AFF00 100%), radial-gradient(42% 53% at 34% 72%, #FFFFFFFF 7%, #073AFF00 100%), radial-gradient(18% 28% at 35% 87%, #FFFFFFFF 7%, #073AFF00 100%), radial-gradient(31% 43% at 7% 98%, #FFFFFFFF 24%, #073AFF00 100%), radial-gradient(21% 37% at 72% 23%, #D3FF6D9C 24%, #073AFF00 100%), radial-gradient(35% 56% at 91% 74%, #8A4FFFF5 9%, #073AFF00 100%), radial-gradient(74% 86% at 67% 38%, #6DFFAEF5 24%, #073AFF00 100%), linear-gradient(125deg, rgb(25, 103, 158) 1%, rgb(171, 159, 199) 100%);
+    box-sizing: border-box;
+    background-color: #D1FFF6;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='0' y2='100%25' gradientTransform='rotate(267,768,347)'%3E%3Cstop offset='0' stop-color='%23D1FFF6'/%3E%3Cstop offset='1' stop-color='%2377D8DF'/%3E%3C/linearGradient%3E%3Cpattern patternUnits='userSpaceOnUse' id='b' width='496' height='413.3' x='0' y='0' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='0.17'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect x='0' y='0' fill='url(%23a)' width='100%25' height='100%25'/%3E%3Crect x='0' y='0' fill='url(%23b)' width='100%25' height='100%25'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.particles-js {
+    width: 100%;
+}
+
+/* Navigation */
+.nav-section {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 0 2rem;
+    /* margin: 1rem 1rem; */
+    margin-top: 1rem;
+    opacity: 100%;
+    box-sizing: border-box;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 15rem;
+    height: 4rem;
+    overflow: hidden;
+}
+
+a {
+    color: black;
+}
+
+.nav-header {
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: "Tagesschrift", system-ui;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 3rem;
+    /* flex: 1; */
+    width: 100%;
+}
+
+
+
+.connect-logo {
+    width: 15rem;
+    height: 10rem;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex: 1;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.3rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: white;
+    transform: scale(1.1);
+}
+
+.search-label {
+    background-color: white;
+}
+
+.search-box {
+    background-color: white;
+    /* display: flex; */
+    /* gap: 1rem; */
+    /* width: 10%; */
+    /* justify-content: start;
+    align-items: center; */
+    /* padding-left: 0rem;
+    padding-right: 2rem; */
+    border-radius: 10px;
+    opacity: 95%;
+    /* color: black; */
+    overflow: hidden;
+}
+
+.search_box {
+    width: 80%;
+    height: 100%;
+    font-size: 1.7rem;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    font-weight: lighter;
+    color: rgba(0, 0, 0, 0.384);
+}
+
+.search_box:focus {
+    border: none;
+    outline: none;
+}
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 20%;
+}
+
+.nav_profile_image {
+    width: 32px;
+    height: 32px;
+}
+
+
+
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 1500%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+
+
+/* Premium Button */
+.Premium {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: none;
+    background-color: gold;
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;
+    color: black;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    transition: transform 0.3s ease;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.Premium:hover {
+    transform: scale(1.05);
+}
+
+/* Shine effect */
+.Premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: skewX(-20deg);
+    transition: left 0.5s;
+}
+
+.Premium:hover::before {
+    left: 130%;
+}
+
+.crown-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+
+.nav_Profile {
+    border: none;
+    margin-left: 1rem;
+    background-color: black;
+    border-radius: 50%;
+    color: black;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav_Profile {
+    transform: scale(1.1);
+}
+
+/* Style the dropdown list (datalist) appearance */
+datalist option {
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    padding: 0.5rem;
+    color: #333;
+    background-color: #fff;
+}
+
+/* Remove browser-specific decorations on input with list */
+input[list]::-webkit-calendar-picker-indicator {
+    display: none !important;
+}
+
+input[list]::-webkit-search-cancel-button {
+    display: none;
+}
+
+/* Optional fallback: style datalist input for better consistency */
+.search_box::-webkit-datalist-popup {
+    background-color: white;
+    color: rgba(251, 251, 251, 0.682);
+}
+
+.search_box::-moz-focus-inner {
+    border: 0;
+}
+
+/* Search Label */
+.search-label img {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+/* Updated Search Box */
+.search-box {
+    /* display: flex;
+    align-items: center; */
+    /* gap: 0.75rem; */
+    background-color: white;
+    border-radius: 100%;
+    /* padding: 0.4rem 1rem; */
+    /* width: 100%;
+    max-width: 80%; */
+    max-width: fit-content;
+    height: fit-content;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+.search-box:focus-within {
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.search-icon-image{
+    width: 40px;
+    height: 40px;
+    background-color:white;
+    border-radius: 100%;
+}
+
+.search-icon-anchor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1%;
+    height: 1%;
+    box-sizing: border-box;
+}
+
+/* Search Input */
+.search_box {
+    flex: 1;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #333;
+    font-family: "Inter", sans-serif;
+    padding: 0.4rem 0;
+}
+
+.search_box::placeholder {
+    color: #888;
+    font-weight: 400;
+}
+
+
+
+
+/* Features  */
+
+.features {
+    /* background-color: white; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 1rem;
+    padding-left: 1.5rem;
+}
+
+.features-header {
+    font-size: 2.5rem;
+    font-family: Montserrat;
+    font-weight: bold;
+    text-align: left;
+}
+
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 0 auto;
+    max-width: 90%;
+    padding: 0 2rem;
+}
+
+.grid-card {
+    /* background-color: lightgray; */
+    color: black;
+    min-width: 30%;
+    min-height: 15rem;
+    display: flex;
+    background-size: 100% 100%;
+    background-position: 0px 0px;
+    background-image: linear-gradient(90deg, rgb(155, 188, 198) 0%, rgb(169, 210, 235) 100%);
+    /* align-items: center;
+    justify-content: center; */
+    transition: all 0.3s;
+}
+
+.features-header {
+    text-align: left;
+}
+
+.grid-card:hover {
+    transform: scale(1.1);
+}
+.style4 {
+    text-align: center;
+    font-family: Roboto;
+    font-size: 2rem;
+    display: block;
+    width: 100%;
+    color: black;
+    text-decoration: none;
+}
+
+.style5 {
+    width: 50%;
+    margin: 0 auto;
+    object-fit: cover;
+}
+
+.grid-card p {
+    font-size: 3rem;
+}
+
+
+/* Search Box  */
+
+.search-box {
+    position: relative;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* width: 80%; */
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.search_box {
+    width: 100%;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0.4rem;
+    font-family: "Inter", sans-serif;
+}
+
+.suggestion-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+}
+
+.suggestion-list div {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.suggestion-list div:hover {
+    background-color: #f0f0f0;
+}
+
+.search-label img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.search-submit {
+    background-color: blue;
+}
+
+.sty {
+    font-family: Montserrat;
+}
+
+
+/* Footer */
+footer {
+    margin-top: 1.5rem;
+    background: #222;
+    color: #ccc;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.footer-section {
+    flex: 1 1 200px;
+    margin: 1rem;
+}
+
+.footer-section h4 {
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.footer-section a {
+    color: #ccc;
+    display: block;
+    text-decoration: none;
+    margin: 0.3rem 0;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
