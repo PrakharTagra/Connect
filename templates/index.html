@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Alumni Search Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: "Segoe UI", sans-serif; background: #f7f7ff; margin: 0; }
+    header { background: linear-gradient(90deg, #4b6cb7, #182848); color: white; padding: 1rem; text-align: center; }
+    h1 { margin: 0; font-size: 1.8rem; }
+    .search-box { text-align: center; padding: 1rem; }
+    input { padding: 0.5rem; font-size: 1rem; width: 60%; border-radius: 8px; border: 1px solid #ccc; }
+    button { padding: 0.6rem 1.2rem; font-size: 1rem; margin-left: 0.5rem; border: none; border-radius: 8px; background: #4b6cb7; color: white; cursor: pointer; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; padding: 1rem; }
+    .card { background: white; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); padding: 1rem; transition: transform 0.2s; }
+    .card:hover { transform: translateY(-4px); }
+    .badges { font-size: 1.2rem; }
+    footer { text-align: center; padding: 1rem; background: #eee; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎓 Alumni Search Portal</h1>
+    <p>Find alumni by name, domain, skills, achievements, year or experience</p>
+  </header>
+
+  <div class="search-box">
+    <input type="text" id="query" placeholder="Search alumni (e.g. AI, >5, 2020, Startup)...">
+    <button onclick="doSearch()">Search</button>
+  </div>
+
+  <div id="results" class="grid">
+    {% for r in cards %}
+      <div class="card">
+        <h3>{{r.Name}} {{ get_domain_emoji(r.Domain) }}</h3>
+        <p><b>Domain:</b> {{r.Domain}}</p>
+        <p><b>Grad Year:</b> {{r.Graduation_Year}}, <b>Exp:</b> {{r.Years_of_Experience}} yrs</p>
+        <p><b>Company:</b> {{r.Current_Position}}</p>
+        <p class="badges">{{ achievement_badges(r.Achievements) }}</p>
+        <a href="/profile/{{r.id}}">View Profile →</a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <footer>Sampled from {{ sample_count }} alumni records 📊</footer>
+
+  <script>
+    async function doSearch() {
+      let q = document.getElementById("query").value;
+      let resp = await fetch("/search?q=" + encodeURIComponent(q));
+      let data = await resp.json();
+      let cont = document.getElementById("results");
+      cont.innerHTML = "";
+      for (let r of data.results) {
+        let div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `
+          <h3>${r.name} ${r.domain_emoji}</h3>
+          <p><b>Domain:</b> ${r.domain}</p>
+          <p><b>Grad Year:</b> ${r.grad_year}, <b>Exp:</b> ${r.exp} yrs</p>
+          <p><b>Company:</b> ${r.company}</p>
+          <p class="badges">${r.ach_badges}</p>
+          <a href="/profile/${r.id}">View Profile →</a>
+        `;
+        cont.appendChild(div);
+      }
+    }
+  </script>
+</body>
+</html>
