@@ -13,95 +13,126 @@
       margin: 0 ;
       background-color: f5f5f5;
     }
-
-.navbar {
-  padding: 0 2%;            /* horizontal padding */
-  box-sizing: border-box;
-  background-color: #333333;
-  height: 12vh;
-  position: flex;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 0px;
-  z-index: 1000;
-}
-
-    .navbar .logo {
-      color: #fff;
-      font-size: 24px;
-      font-weight: bold;
-      margin-right: auto;
-      height: 50px;
-      width: 150px;
-      
+    .nav-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 2%;
+        box-sizing: border-box;
+        background-color: #333333;
+        height: 12vh;
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
     }
-    .connectlogo {
-      width: 4vw;
-      height: 4vw;
-      margin-top: -10px;
-    object-fit: centre;
+    .nav-logo {
+        display: flex;
+        align-items: center;
+        width: 30vw;
+        overflow: hidden;
+    }
+    .nav-header {
+        font-size: 1.8rem;
+        font-weight: bold;
+        font-family: "Tagesschrift", system-ui;
+    }
+    .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 70vw;
+    }
+    .connect-logo {
+        width: 15rem;
+        height: 10rem;
+    }
+    .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #fdfaf4;
+        font-size: 1.3rem;
+        width: 35vw;
+        padding-left: 7vw;
+        gap: 1vw;
+    }
+    .nav-links a {
+        color: rgb(17, 16, 16);
+        text-decoration: none;
+        font-size: 1.3rem;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .nav-links a:hover {
+        color: white;
+        transform: scale(1.1);
+    }
+    .nav-buttons {
+        display: flex;
+        align-items: center;
+        width: 35vw;
+        justify-content: end;
+        gap: 2%;
+    }
+    .htext{
+        font-size: 0.9rem;
+        margin-top: 5%;
+    }
+    .i{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
     }
 
-    .navbar a {
-      color: #fff;
-      text-decoration: none;
-      margin-left: 20px;
-      padding: 8px 12px;
-      border-radius: 4px;
-      transition: background-color 0.3s;
-    }
 
-    .navbar a:hover {
-      background-color: #575757;
-    }
+    
 
     header { background: linear-gradient(90deg, #4b6cb7, #182848); color: white; padding: 1rem; text-align: center; }
     h1 { margin: 0; font-size: 1.8rem; }
-    .search-box { text-align: center; padding: 1rem; }
+    .search-box { text-align: center; padding: 1rem; position: 'fixed' ; padding-top: 15vh; }
     input { padding: 0.5rem; font-size: 1rem; width: 60%; border-radius: 8px; border: 1px solid #ccc; }
     button { padding: 0.6rem 1.2rem; font-size: 1rem; margin-left: 0.5rem; border: none; border-radius: 8px; background: #4b6cb7; color: white; cursor: pointer; }
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; padding: 1rem; }
     .card { background: white; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); padding: 1rem; transition: transform 0.2s; }
     .card:hover { transform: translateY(-4px); }
+    .badges { font-size: 1.2rem; }
+    footer { text-align: center; padding: 1rem; background: #eee; font-size: 0.9rem; }
   </style>
 </head>
 <body>
- <!-- Navigation Bar -->
-  <div class="navbar">
-    <div class="logo"><img src="log.png" class="connectlogo"></div>
-    <a href="user.html">Home</a>
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Contact</a>
-  </div>
-
-  <div class="navbar">
-    <div class="logo"><img src="log.png" class="connectlogo"></div>
-    <a href="user.html">Home</a>
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Contact</a>
-  </div>
-<div class="search-box">
-  <input type="text" id="query" placeholder="Search alumni by name, domain, skill...">
-  <button onclick="doSearch()">Search</button>
-</div>
-
-<div id="results" class="grid">
-  {% for r in cards %}
-    <div class="card">
-      <h3>{{ r.Name }}</h3>
-      <p><b>Domain:</b> {{ r.Domain }}</p>
-      <p><b>Grad Year:</b> {{ r.Graduation_Year }}, <b>Exp:</b> {{ r.Years_of_Experience }} yrs</p>
-      <p><b>Company:</b> {{ r.Current_Position }}</p>
-      <a href="/profile/{{ r.id }}">View Profile →</a>
+  <nav class="nav-section">
+    <div class="nav-logo">
+      <img src="../static/assets/Images/Logo.png" alt="Logo" class="connect-logo"/>
     </div>
-  {% endfor %}
-</div>
+    <div class="nav-container">
+      <div class="nav-links">
+          <a href="{{ url_for('index') }}">
+            <div class="home i">
+              <div><i class="fa-solid fa-house"></i></div>
+              <div class="htext">Home</div>
+            </div>
+          </a>
+          <a href="{{ url_for('alumnisearch') }}">
+            <div class="search i">
+              <div><i class="fa-solid fa-magnifying-glass"></i></div>
+              <div class="htext">Search</div>
+            </div>
+          </a>
+          <div class="connections i">
+            <div><i class="fa-solid fa-user-group"></i></div>
+            <div class="htext">Connections</div>
+          </div>
+          <div class="noti i">
+            <div><i class="fa-solid fa-bell"></i></div>
+            <div class="htext">Notifications</div>
+          </div>
+          <div class="msg i">
+            <div><i class="fa-solid fa-comment"></i></div>
+            <div class="htext">Messages</div>
+          </div>
+      </div>
+    </div>
+  </nav>
 
 <script>
 async function doSearch() {
