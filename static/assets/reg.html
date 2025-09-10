@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login / Register</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --panel-width: 320px;
+      --container-width: 1000px;
+      --container-height: 620px;
+      --accent: #07b0ff;
+      --bg-dark: #071417;
+      --card-dark: #0b1618;
+    }
+    *{box-sizing: border-box;}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: linear-gradient(180deg,#12343a 0%, #0f2b30 100%);
+      font-family: "Merriweather", serif;
+      color:#fff;
+      padding:20px;
+    }
+    .auth-container{
+      width:var(--container-width);
+      max-width: calc(100% - 40px);
+      height:var(--container-height);
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow: 0 20px 50px rgba(2,8,10,0.6);
+      display:flex;
+      background: linear-gradient(90deg, rgba(10,18,19,1) 0%, rgba(6,13,14,1) 100%);
+    }
+    .panels-wrapper{flex:1;position:relative;overflow:hidden;}
+    .panels{
+      width:200%;
+      height:100%;
+      display:flex;
+      transition: transform 700ms cubic-bezier(.2,.8,.2,1);
+      transform: translateX(0);
+    }
+    .panel{
+      width:50%;
+      padding:44px 46px;
+      background: linear-gradient(180deg, rgba(7,20,20,1) 0%, rgba(10,16,16,1) 100%);
+      color:#fff;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .panel h2{
+      font-size:34px;
+      margin:0 0 6px 0;
+      text-align:left;
+      font-weight:700;
+      color:#fff;
+    }
+    .form{
+      margin-top:8px;
+      overflow-y:auto;
+      padding-right:8px;
+      max-height: calc(100% - 68px);
+    }
+    .form-group{margin-bottom:18px;text-align:left;}
+    label{display:block;margin-bottom:8px;font-size:16px;color:#e6f3f7;}
+    input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="password"], select{
+      width:100%;
+      padding:12px 14px;
+      border-radius:8px;
+      border:none;
+      font-size:15px;
+      outline:none;
+      background:#ffffff;
+      color:#0b1a1a;
+      box-shadow: 0 2px 6px rgba(3,8,8,0.25) inset;
+    }
+    .submit-btn{
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border:none;
+      cursor:pointer;
+      background: var(--accent);
+      color:#042026;
+      font-size:16px;
+      font-weight:600;
+      margin-top:4px;
+    }
+    .side-panel{
+      width: var(--panel-width);
+      background: linear-gradient(180deg, var(--accent) 0%, #00a0ef 100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      padding:36px 18px;
+      gap:18px;
+      flex-shrink:0;
+    }
+    .side-panel h3{font-size:34px;margin:0;color:#fff;text-align:center;}
+    .side-panel p{margin:0;text-align:center;color: rgba(255,255,255,0.95);line-height:1.5;}
+    .switch-btn{
+      padding:10px 20px;
+      border-radius:28px;
+      border:none;
+      background:white;
+      color:var(--accent);
+      cursor:pointer;
+      font-weight:700;
+    }
+    .small{font-size:14px;color: rgba(230,243,247,0.9);text-align:left;}
+    .form::-webkit-scrollbar{width:10px;}
+    .form::-webkit-scrollbar-thumb{background: rgba(255,255,255,0.12);border-radius:8px;}
+    .auth-container.register-active .panels{transform: translateX(-50%);}
+    @media (max-height:700px){
+      :root{--container-height: calc(100vh - 60px);}
+      .form{max-height: calc(100% - 68px);}
+    }
+    @media (max-width:900px){
+      .auth-container{flex-direction:column;width:100%;height:100%;border-radius:12px;}
+      .side-panel{width:100%;height:160px;order:3;}
+      .panels-wrapper{order:1;height:auto;}
+      .panels{width:100%;transform: translateX(0);flex-direction:column;}
+      .panel{width:100%;padding:26px;}
+      .auth-container.register-active .panels{transform: translateX(0);}
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-container" id="authContainer">
+    <div class="panels-wrapper">
+      <div class="panels" id="panels">
+        <section class="panel">
+          <h2>Login</h2>
+          <div class="form">
+            <form onsubmit="event.preventDefault(); alert('Login submitted')">
+              <div class="form-group">
+                <label for="login-email">Email</label>
+                <input id="login-email" type="email" placeholder="Enter your email" required>
+              </div>
+              <div class="form-group">
+                <label for="login-password">Password</label>
+                <input id="login-password" type="password" placeholder="Enter your password" required>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <div class="small"><input id="remember" type="checkbox"> <label for="remember" style="display:inline;margin-left:6px;">Remember</label></div>
+                <a href="#" style="color:#aeefff; text-decoration:none; font-size:14px;">Forgot?</a>
+              </div>
+              <button class="submit-btn" type="submit">Login</button>
+              <div style="margin-top:18px; font-size:14px; color:rgba(230,243,247,0.9);">
+                Don't have an account?
+                <button type="button" class="switch-btn" id="switchToRegister">Create account</button>
+              </div>
+            </form>
+          </div>
+        </section>
+        <section class="panel">
+          <h2>Register</h2>
+          <div class="form">
+            <form onsubmit="event.preventDefault(); alert('Sign up submitted')">
+              <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input id="fullname" type="text" placeholder="Your full name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="you@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input id="phone" type="tel" placeholder="e.g. +91 9876543210" required>
+              </div>
+              <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input id="dob" type="date" required>
+              </div>
+              <div class="form-group">
+                <label for="role">Registration Type</label>
+                <select id="role" required>
+                  <option value="" disabled selected>Select your role</option>
+                  <option>Student</option>
+                  <option>Alumni</option>
+                  <option>Faculty</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="college">College</label>
+                <input id="college" type="text" placeholder="Your college name" required>
+              </div>
+              <div class="form-group">
+                <label for="state">State</label>
+                <select id="state" required>
+                  <option value="" disabled selected>Select your state</option>
+                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chandigarh">Chandigarh</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Ladakh">Ladakh</option>
+                    <option value="Lakshadweep">Lakshadweep</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Puducherry">Puducherry</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West Bengal">West Bengal</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="reg-pass">Password</label>
+                <input id="reg-pass" type="password" placeholder="Create a password" required>
+              </div>
+              <button class="submit-btn" type="submit">Sign Up</button>
+              <div style="margin-top:16px; font-size:14px; color:rgba(230,243,247,0.9);">
+                Already registered?
+                <button type="button" class="switch-btn" id="switchToLogin">Back to Login</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </div>
+    </div>
+    <aside class="side-panel" id="sidePanel">
+      <h3 id="sideTitle">Hello, Friend!</h3>
+      <p id="sideDesc">Enter your personal details and start your journey with us</p>
+      <button class="switch-btn" id="sideSwitch">Switch</button>
+    </aside>
+  </div>
+  <script>
+    const authContainer = document.getElementById('authContainer');
+    const sideSwitch = document.getElementById('sideSwitch');
+    const switchToRegister = document.getElementById('switchToRegister');
+    const switchToLogin = document.getElementById('switchToLogin');
+    const sideTitle = document.getElementById('sideTitle');
+    const sideDesc = document.getElementById('sideDesc');
+    let showingRegister = false;
+    function updateSideText(){
+      if(showingRegister){
+        sideTitle.textContent = 'Welcome Back!';
+        sideDesc.textContent  = 'To keep connected with us, please login with your personal info';
+      } else {
+        sideTitle.textContent = 'Hello, Friend!';
+        sideDesc.textContent  = 'Enter your personal details and start your journey with us';
+      }
+    }
+    function togglePanels(){
+      showingRegister = !showingRegister;
+      if(showingRegister){
+        authContainer.classList.add('register-active');
+      } else {
+        authContainer.classList.remove('register-active');
+      }
+      updateSideText();
+    }
+    sideSwitch.addEventListener('click', togglePanels);
+    switchToRegister.addEventListener('click', togglePanels);
+    switchToLogin.addEventListener('click', togglePanels);
+    updateSideText();
+  </script>
+</body>
+</html>

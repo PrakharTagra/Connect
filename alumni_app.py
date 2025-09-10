@@ -274,8 +274,9 @@ def achievement_badges(ach):
     return " ".join(badges)
 
 # ---------------- Gemini Query ----------------
+# ---------------- Gemini Query (Safe with Retry) ----------------
 @lru_cache(maxsize=128)
-def query_gemini(prompt, max_tokens=200):
+def query_gemini(prompt, max_tokens=200, retries=5, delay=2):
     headers = {
         "Content-Type": "application/json",
         "x-goog-api-key": GEMINI_API_KEY
@@ -284,18 +285,27 @@ def query_gemini(prompt, max_tokens=200):
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {"maxOutputTokens": max_tokens}
     }
-    try:
-        time.sleep(1)  # avoid rate-limit
-        resp = requests.post(GEMINI_API_URL, headers=headers, json=data, timeout=20)
-        resp.raise_for_status()
-        out = resp.json()
-        return out["candidates"][0]["content"]["parts"][0]["text"]
-    except requests.exceptions.HTTPError as e:
-        if resp.status_code == 429:
-            return "(Gemini error ❌: Too Many Requests, slow down!)"
-        return f"(Gemini error ❌: {e})"
-    except Exception as e:
-        return f"(Gemini error ❌: {e})"
+
+    for attempt in range(retries):
+        try:
+            time.sleep(1)  # avoid rate-limit
+            resp = requests.post(GEMINI_API_URL, headers=headers, json=data, timeout=30)
+            resp.raise_for_status()
+            out = resp.json()
+            return out["candidates"][0]["content"]["parts"][0]["text"]
+
+        except requests.exceptions.HTTPError as e:
+            if resp.status_code == 429:  # Too many requests
+                time.sleep(delay * (attempt + 1))  # exponential backoff
+                continue
+            return "(Service unavailable right now.)"
+
+        except Exception:
+            time.sleep(delay * (attempt + 1))  # retry with delay
+            continue
+
+    # If all retries failed, return fallback
+    return "(Service is busy, please try again later.)"
 
 # ---------------- Search Helper ----------------
 def search_alumni(query):
