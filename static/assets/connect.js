@@ -1,77 +1,3 @@
-particlesJS("particles-js", {
-    "particles": {
-      "number": { "value": 80 },
-      "color": { "value": "#ffffff" },
-      "shape": { "type": "circle" },
-      "opacity": {
-        "value": 0.8,
-        "random": true
-      },
-      "size": {
-        "value": 10,
-        "random": true
-      },
-      "move": {
-        "enable": true,
-        "speed": 1,
-        "direction": "top",
-        "out_mode": "out"
-      }
-    },
-    "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": false } } },
-    "retina_detect": true
-  });
-
-  // Simple scroll animation
-document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll(".grid-card");
-  
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-  
-    cards.forEach(card => {
-      observer.observe(card);
-    });
-  });
-
-  async function handleLogin(event) {
-      event.preventDefault();
-      
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      try {
-        const response = await fetch('http://localhost:5000/api/auth/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ email, password })
-        });
-
-        const data = await response.json();
-        
-        if (response.ok) {
-          // Store token in localStorage
-          localStorage.setItem('token', data.token);
-          // Redirect to dashboard or home page
-          window.location.href = '/dashboard.html';
-        } else {
-          alert(data.message);
-        }
-      } catch (err) {
-        console.error('Error:', err);
-        alert('An error occurred during login');
-      }
-    }
 async function sendMsg() {
     let inp = document.getElementById("msg");
     let text = inp.value.trim();
@@ -126,3 +52,22 @@ async function doSearch() {
         cont.appendChild(div);
       }
     }
+const chat = document.querySelector(".chat");
+const chat_container = document.querySelector("#chat-container");
+const ct = document.querySelector(".ct");
+
+chat.addEventListener("click", () => {
+  chat_container.style.display = "block";
+  chat.style.display = "none";
+  requestAnimationFrame(() => {
+    chat_container.classList.add("active");
+  });
+});
+
+ct.addEventListener("click", () => {
+  chat_container.classList.remove("active");
+  setTimeout(() => {
+    chat_container.style.display = "none";
+    chat.style.display = "block";
+  }, 500);
+});
