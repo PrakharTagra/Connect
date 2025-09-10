@@ -6,6 +6,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { font-family: "Segoe UI", sans-serif; background: #f7f7ff; margin: 0; }
+        body, html {
+      font-family: Arial, sans-serif;
+      background-color: #e0e0e0;
+      padding: 0;
+      margin: 0 ;
+      background-color: f5f5f5;
+    }
+
+.navbar {
+  padding: 0 2%;            /* horizontal padding */
+  box-sizing: border-box;
+  background-color: #333333;
+  height: 12vh;
+  position: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0px;
+  z-index: 1000;
+}
+
+    .navbar .logo {
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+      margin-right: auto;
+      height: 50px;
+      width: 150px;
+      
+    }
+    .connectlogo {
+      width: 4vw;
+      height: 4vw;
+      margin-top: -10px;
+    object-fit: centre;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .navbar a:hover {
+      background-color: #575757;
+    }
+
     header { background: linear-gradient(90deg, #4b6cb7, #182848); color: white; padding: 1rem; text-align: center; }
     h1 { margin: 0; font-size: 1.8rem; }
     .search-box { text-align: center; padding: 1rem; }
@@ -19,10 +72,15 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>🎓 Alumni Search Portal</h1>
-    <p>Find alumni by name, domain, skills, achievements, year or experience</p>
-  </header>
+ <!-- Navigation Bar -->
+  <div class="navbar">
+    <div class="logo"><img src="log.png" class="connectlogo"></div>
+    <a href="user.html">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+  </div>
+
 
   <div class="search-box">
     <input type="text" id="query" placeholder="Search alumni (e.g. AI, >5, 2020, Startup)...">
