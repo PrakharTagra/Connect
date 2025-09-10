@@ -272,6 +272,18 @@
       localStorage.setItem("user", JSON.stringify(user));
       window.location.href = "/";
     });
+    document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    const email = document.getElementById("login-email").value.trim();
+    const stored = JSON.parse(localStorage.getItem("user") || "null");
+    if (stored && stored.email && stored.email.toLowerCase() === email.toLowerCase()){
+    localStorage.setItem("user", JSON.stringify(stored));
+  } else {
+    const minimal = { name: "User", email: email, role: "Member" };
+    localStorage.setItem("user", JSON.stringify(minimal));
+  }
+  window.location.href = "/";
+});
   </script>
 </body>
 </html>

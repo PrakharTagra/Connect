@@ -1,66 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>{{ alum.Name }} - Alumni Profile</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ alum.Name }} - Profile</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='profile_view.css') }}">
   <style>
-    body { font-family: "Segoe UI", sans-serif; margin: 0; background: #fafafa; }
-    header { background: #4b6cb7; color: white; padding: 1rem; }
-    h1 { margin: 0; }
-    .container { padding: 1rem 2rem; }
-    .section { background: white; margin: 1rem 0; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-    .chat-box { background: #fff; border: 1px solid #ccc; padding: 0.5rem; height: 200px; overflow-y: auto; border-radius: 8px; }
-    .chat-input { display: flex; margin-top: 0.5rem; }
-    .chat-input input { flex: 1; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px; }
-    .chat-input button { margin-left: 0.5rem; padding: 0.5rem 1rem; border: none; border-radius: 8px; background: #4b6cb7; color: white; cursor: pointer; }
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+      color: #333;
+    }
+
+    .profile-container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 3rem auto;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .profile-container:hover {
+      transform: translateY(-5px);
+    }
+
+    .cover-photo {
+      width: 100%;
+      height: 250px;
+      background: url("{{ url_for('static', filename='assets/images/Cover_Photo/default.jpg.jpg') }}") center/cover no-repeat;
+      position: relative;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+
+    .profile-picture {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 5px solid #fff;
+      position: absolute;
+      top: 205px;
+      left: 50px;
+      background: url("{{ url_for('static', filename='assets/images/Profile_Photo/default.jpg.jpg') }}") center/cover no-repeat;
+      background-size: cover;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .profile-details {
+      padding: 100px 40px 40px 40px;
+    }
+
+    .name-domain h1 {
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+      color: #1f2937;
+    }
+
+    .name-domain p {
+      color: #6b7280;
+      margin-top: 0;
+      font-weight: 500;
+    }
+
+    .connections-email p {
+      margin: 0.3rem 0;
+    }
+
+    .connections-email a {
+      color: #4b6cb7;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .about-section, .projects, .achievements {
+      margin: 2rem 0;
+      padding: 1rem 1.5rem;
+      background: rgba(255,255,255,0.7);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .about-section h2,
+    .projects h2,
+    .achievements h2,
+    .feature-section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: #1f2937;
+    }
+
+    ul { padding-left: 1.2rem; }
+    li { margin-bottom: 0.5rem; }
+
+    .feature-section {
+      margin: 2rem 0;
+    }
+
+    .feature1-grid {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .grid-card {
+      width: 120px;
+      text-align: center;
+      border-radius: 15px;
+      padding: 0.5rem;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .grid-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .grid-card img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 0.5rem;
+    }
+
+    .grid-card p {
+      margin: 0.2rem 0;
+      font-size: 0.85rem;
+      color: #1f2937;
+      font-weight: 500;
+    }
+
+    .grid-card a {
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>{{ alum.Name }}</h1>
-    <p>{{ alum.Current_Position }} | Grad Year: {{ alum.Graduation_Year }} | Exp: {{ alum.Years_of_Experience }} yrs</p>
-  </header>
-  <div class="container">
-    <div class="section">
-      <h2>Bio</h2>
-      <p>{{ bio }}</p>
+
+<div class="profile-container">
+  <!-- Cover Photo -->
+  <div class="cover-photo"></div>
+
+  <!-- Profile Picture -->
+  <div class="profile-picture"></div>
+
+  <div class="profile-details">
+    <div class="name-domain">
+      <h1>{{ alum.Name }}</h1>
+      <p>{{ alum.Current_Position }} | {{ alum.Domain }}</p>
     </div>
-    <div class="section">
-      <h2>Details</h2>
-      <p><b>Domain:</b> {{ alum.Domain }}</p>
-      <p><b>Skills:</b> {{ alum.Skills }}</p>
-      <p><b>Projects:</b> {{ alum.Projects }}</p>
-      <p><b>Achievements:</b> {{ alum.Achievements }}</p>
-      <p><b>Email:</b> {{ alum.Email }}</p>
-      <p><b>Instagram:</b> {{ alum.Instagram }}</p>
-      <p><b>X:</b> {{ alum.X_handle }}</p>
+
+    <div class="connections-email">
+      <p>Experience: {{ alum.Years_of_Experience }} years</p>
+      <p>Email: <a href="mailto:{{ alum.Email }}">{{ alum.Email }}</a></p>
+      {% if alum.Instagram %}
+      <p>Instagram: <a href="https://instagram.com/{{ alum.Instagram }}" target="_blank">{{ alum.Instagram }}</a></p>
+      {% endif %}
+      {% if alum.X_handle %}
+      <p>X: <a href="https://x.com/{{ alum.X_handle }}" target="_blank">{{ alum.X_handle }}</a></p>
+      {% endif %}
     </div>
-    <div class="section">
-      <h2>LYNQ</h2>
-      <div id="chat" class="chat-box"></div>
-      <div class="chat-input">
-        <input id="msg" placeholder="Ask something...">
-        <button onclick="sendMsg()">Send</button>
+
+    <div class="about-section">
+      <h2>About / Bio</h2>
+      <p>{{ alum.Bio }}</p>
+    </div>
+
+    <div class="projects">
+      <h2>Projects</h2>
+      <ul>
+        {% for project in alum.Projects.split(",") %}
+          <li>{{ project }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="achievements">
+      <h2>Achievements</h2>
+      <ul>
+        {% for ach in alum.Achievements.split(",") %}
+          <li>{{ ach }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="feature-section">
+      <h2>Recommendations</h2>
+      <div class="feature1-grid">
+        {% for rec in recommended %}
+        <div class="grid-card">
+          <a href="{{ url_for('profile_page', pid=rec.id) }}">
+            <img src="{{ url_for('static', filename='assets/images/Profile_Photo/default.jpg.jpg') }}" alt="{{ rec.Name }}">
+            <p>{{ rec.Name }}</p>
+            <p style="font-size:0.8rem;color:gray;">{{ rec.Current_Position }}</p>
+          </a>
+        </div>
+        {% endfor %}
       </div>
     </div>
   </div>
-  <script>
-    async function sendMsg() {
-      let inp = document.getElementById("msg");
-      let text = inp.value;
-      if (!text) return;
-      let chat = document.getElementById("chat");
-      chat.innerHTML += `<div><b>You:</b> ${text}</div>`;
-      inp.value = "";
-      let resp = await fetch("/api/chat", {
-        method: "POST", headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({message: text, profile_id: {{ alum.id }}})
-      });
-      let data = await resp.json();
-      chat.innerHTML += `<div><b>Bot:</b> ${data.reply}</div>`;
-      chat.scrollTop = chat.scrollHeight;
-    }
-  </script>
+</div>
+
 </body>
 </html>

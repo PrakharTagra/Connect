@@ -65,18 +65,13 @@ def profile_page(pid):
     row = df[df["id"] == pid]
     if row.empty:
         return "Profile not found", 404
-    r = row.iloc[0].to_dict()
-    prompt = (
-        f"Write a short engaging alumni bio for {r.get('Name')}.\n"
-        f"Domain: {r.get('Domain')}\n"
-        f"Skills: {r.get('Skills')}\n"
-        f"Achievements: {r.get('Achievements')}\n"
-        f"Current Position: {r.get('Current_Position')}"
-    )
-    bio = query_gemini(prompt)
-    bio = clean_reply(bio)
-    return render_template("profile.html", alum=r, bio=bio)
-
+    alum = row.iloc[0].to_dict()
+    
+    # Pick 4–5 random recommended alumni excluding the current profile
+    num_recs = min(5, len(df) - 1)
+    recommended = df[df["id"] != pid].sample(num_recs).to_dict(orient="records")
+    
+    return render_template("profile.html", alum=alum, recommended=recommended)
 @app.route("/search")
 def api_search():
     q = request.args.get("q", "")

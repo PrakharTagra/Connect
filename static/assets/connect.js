@@ -1,23 +1,24 @@
+// ===== CHAT FUNCTIONALITY =====
 async function sendMsg() {
-    let inp = document.getElementById("msg");
-    let text = inp.value.trim();
+    const inp = document.getElementById("msg");
+    const text = inp.value.trim();
     if (!text) return;
 
-    let chat = document.getElementById("chat");
+    const chat = document.getElementById("chat");
     chat.innerHTML += `<div style="text-align:right;"><b>You:</b> ${text}</div>`;
     inp.value = "";
     chat.scrollTop = chat.scrollHeight;
 
     try {
-        let resp = await fetch("/api/chat", {
+        const resp = await fetch("/api/chat", {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({message: text})
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: text })
         });
 
         if (!resp.ok) throw new Error("API response error");
 
-        let data = await resp.json();
+        const data = await resp.json();
         chat.innerHTML += `<div style="text-align:left;"><b>Lynq:</b> ${data.reply}</div>`;
         chat.scrollTop = chat.scrollHeight;
     } catch (err) {
@@ -31,77 +32,84 @@ document.getElementById("msg").addEventListener("keypress", function(e) {
     if (e.key === "Enter") sendMsg();
 });
 
-
+// ===== SEARCH FUNCTIONALITY =====
 async function doSearch() {
-      let q = document.getElementById("query").value;
-      let resp = await fetch("/search?q=" + encodeURIComponent(q));
-      let data = await resp.json();
-      let cont = document.getElementById("results");
-      cont.innerHTML = "";
-      for (let r of data.results) {
-        let div = document.createElement("div");
+    const q = document.getElementById("query").value;
+    const resp = await fetch("/search?q=" + encodeURIComponent(q));
+    const data = await resp.json();
+    const cont = document.getElementById("results");
+    cont.innerHTML = "";
+    for (const r of data.results) {
+        const div = document.createElement("div");
         div.className = "card";
         div.innerHTML = `
-          <h3>${r.name} ${r.domain_emoji}</h3>
+          <h3>${r.name}</h3>
           <p><b>Domain:</b> ${r.domain}</p>
           <p><b>Grad Year:</b> ${r.grad_year}, <b>Exp:</b> ${r.exp} yrs</p>
           <p><b>Company:</b> ${r.company}</p>
-          <p class="badges">${r.ach_badges}</p>
           <a href="/profile/${r.id}">View Profile →</a>
         `;
         cont.appendChild(div);
-      }
     }
-const chat = document.querySelector(".chat");
-const chat_container = document.querySelector("#chat-container");
-const ct = document.querySelector(".ct");
+}
 
-chat.addEventListener("click", () => {
-  chat_container.style.display = "block";
-  chat.style.display = "none";
-  requestAnimationFrame(() => {
-    chat_container.classList.add("active");
-  });
-});
+// ===== CHAT BOX TOGGLE =====
+const chatToggle = document.querySelector(".chat");
+const chatContainer = document.querySelector("#chat-container");
+const chatClose = document.querySelector(".ct");
 
-ct.addEventListener("click", () => {
-  chat_container.classList.remove("active");
-  setTimeout(() => {
-    chat_container.style.display = "none";
-    chat.style.display = "block";
-  }, 500);
-});
-function loadProfile(){
-      const user = JSON.parse(localStorage.getItem("user") || "null");
-      if (user) {
-        document.getElementById("profileName").textContent = user.name || "User";
-        document.getElementById("profileEmail").textContent = user.email || "";
-        document.getElementById("profileRole").textContent = user.role ? user.role : "";
-        document.getElementById("profileCollege").textContent = user.college ? user.college : "";
-      } else {
-        document.getElementById("profileName").textContent = "Guest";
-        document.getElementById("profileEmail").textContent = "Not logged in";
-        document.getElementById("profileRole").textContent = "";
-        document.getElementById("profileCollege").textContent = "";
-      }
-    }
-
-    document.getElementById("logoutBtn").addEventListener("click", function(){
-      localStorage.removeItem("user");
-      // go back to login page
-      window.location.href = "login.html";
+if (chatToggle && chatContainer && chatClose) {
+    chatToggle.addEventListener("click", () => {
+        chatContainer.style.display = "block";
+        chatToggle.style.display = "none";
+        requestAnimationFrame(() => chatContainer.classList.add("active"));
     });
 
-    loadProfile();
-let div1=document.querySelector(".div1")
-let profile=document.querySelector(".profile-card");
-let login=document.querySelector(".Login")
-window.addEventListener("DOMContentLoaded", function () {
+    chatClose.addEventListener("click", () => {
+        chatContainer.classList.remove("active");
+        setTimeout(() => {
+            chatContainer.style.display = "none";
+            chatToggle.style.display = "block";
+        }, 500);
+    });
+}
+
+// ===== PROFILE LOADING & SESSION MANAGEMENT =====
+function loadProfile() {
     const user = JSON.parse(localStorage.getItem("user") || "null");
+    const div1 = document.querySelector(".div1");
+    const profile = document.querySelector(".profile-card");
+    const loginBtn = document.querySelector(".Login");
 
     if (user) {
-      div1.style.display="none";
-      profile.style.display="block"
-      login.style.display="none"
+        div1 && (div1.style.display = "none");
+        profile && (profile.style.display = "block");
+        loginBtn && (loginBtn.style.display = "none");
+
+        document.getElementById("profileName").textContent = user.name || "User";
+        document.getElementById("profileEmail").textContent = user.email || "";
+        document.getElementById("profileRole").textContent = user.role || "";
+        document.getElementById("profileCollege").textContent = user.college || "";
+    } else {
+        div1 && (div1.style.display = "block");
+        profile && (profile.style.display = "none");
+        loginBtn && (loginBtn.style.display = "block");
     }
-  });
+}
+
+loadProfile();
+
+// ===== LOGOUT FUNCTION =====
+const logoutBtn = document.getElementById("logoutBtn");
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+        localStorage.removeItem("user");
+        window.location.href = "../static/assets/reg.html"; // login/register page
+    });
+}
+
+// ===== LOGIN & REGISTER REDIRECT =====
+const user = JSON.parse(localStorage.getItem("user") || "null");
+if (!user && window.location.pathname !== "/static/assets/reg.html") {
+    window.location.href = "../static/assets/reg.html"; // force login page
+}
