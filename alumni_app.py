@@ -52,12 +52,12 @@ def clean_reply(text):
 
 @app.route("/")
 def index():
-    cards = df.sample(min(12, len(df))).to_dict(orient="records")
+    cards = df.to_dict(orient="records")
     return render_template("index.html", cards=cards)
 
 @app.route("/alumnisearch")
 def alumnisearch():
-    cards = df.sample(min(12, len(df))).to_dict(orient="records")
+    cards = df.to_dict(orient="records")
     return render_template("alumnisearch.html", cards=cards)
 
 @app.route("/profile/<int:pid>")
@@ -87,7 +87,7 @@ def api_search():
         mask |= df["Domain"].str.lower().str.contains(re.escape(t))
         mask |= df["Skills"].str.lower().str.contains(re.escape(t))
         mask |= df["Current_Position"].str.lower().str.contains(re.escape(t))
-    results = df[mask].head(12)
+    results = df[mask]
     items = []
     for _, r in results.iterrows():
         items.append({
@@ -96,8 +96,7 @@ def api_search():
             "domain": r["Domain"],
             "grad_year": r["Graduation_Year"],
             "exp": r["Years_of_Experience"],
-            "company": r["Current_Position"],
-            "projects": r["Projects"]
+            "company": r["Current_Position"]
         })
     return jsonify({"results": items})
 
