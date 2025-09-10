@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Alumni Search Portal</title>
+  <title>Connections</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
         .nav-section {
@@ -149,18 +149,24 @@
               <div class="htext">Search</div>
             </div>
           </a>
-          <div class="connections i">
-            <div><i class="fa-solid fa-user-group"></i></div>
-            <div class="htext">Connections</div>
-          </div>
-          <div class="noti i">
-            <div><i class="fa-solid fa-bell"></i></div>
-            <div class="htext">Notifications</div>
-          </div>
-          <div class="msg i">
-            <div><i class="fa-solid fa-comment"></i></div>
-            <div class="htext">Messages</div>
-          </div>
+          <a href="{{ url_for('connections') }}">
+            <div class="connections i">
+              <div><i class="fa-solid fa-user-group"></i></div>
+              <div class="htext">Connections</div>
+            </div>
+          </a>
+          <a href="{{ url_for('noti') }}">
+            <div class="noti i">
+              <div><i class="fa-solid fa-bell"></i></div>
+              <div class="htext">Notifications</div>
+            </div>
+          </a>
+          <a href="{{ url_for('messages') }}">
+            <div class="msg i">
+              <div><i class="fa-solid fa-comment"></i></div>
+              <div class="htext">Messages</div>
+            </div>
+          </a>
       </div>
     </div>
   </nav>

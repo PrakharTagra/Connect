@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notifications - Connect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/assets/index.css">
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fa;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #004466;
+    }
+    .Login{
+        display: none;
+    }
+    .notification {
+      background: white;
+      padding: 15px 20px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+    .notification .icon {
+      font-size: 24px;
+      color: #004466;
+      flex-shrink: 0;
+    }
+    .notification-content h3 {
+      margin: 0 0 6px 0;
+      font-size: 16px;
+      color: #222;
+    }
+    .notification-content p {
+      margin: 0;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.5;
+    }
+    .notification time {
+      font-size: 12px;
+      color: #888;
+      margin-top: 6px;
+      display: block;
+    }
+
+    .notification.session {
+      border-left: 5px solid #0099cc;
+    }
+    .notification.general {
+      border-left: 5px solid #ff8800;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-section">
+    <div class="nav-logo">
+      <img src="../static/assets/Images/Logo.png" alt="Logo" class="connect-logo"/>
+    </div>
+    <div class="nav-container">
+      <div class="nav-links">
+          <a href="{{ url_for('index') }}">
+            <div class="home i">
+              <div><i class="fa-solid fa-house"></i></div>
+              <div class="htext">Home</div>
+            </div>
+          </a>
+          <a href="{{ url_for('alumnisearch') }}">
+            <div class="search i">
+              <div><i class="fa-solid fa-magnifying-glass"></i></div>
+              <div class="htext">Search</div>
+            </div>
+          </a>
+          <a href="{{ url_for('connections') }}">
+            <div class="connections i">
+              <div><i class="fa-solid fa-user-group"></i></div>
+              <div class="htext">Connections</div>
+            </div>
+          </a>
+          <a href="{{ url_for('noti') }}">
+            <div class="noti i">
+              <div><i class="fa-solid fa-bell"></i></div>
+              <div class="htext">Notifications</div>
+            </div>
+          </a>
+          <a href="{{ url_for('messages') }}">
+            <div class="msg i">
+              <div><i class="fa-solid fa-comment"></i></div>
+              <div class="htext">Messages</div>
+            </div>
+          </a>
+      </div>
+      <div class="nav-buttons">
+        <button class="Premium">
+          <img src="../static/assets/Images/premium-icon.png" alt="Crown" class="crown-icon">
+          Premium
+        </button>
+        <a href="../static/assets/reg.html"><button class="Login">Login/Signup</button></a>
+      </div>
+    </div>
+  </nav>
+    </header>
+  <main>
+      <div class="container">
+        <h2>Latest Notifications</h2>
+        <!-- Alumni Session Example -->
+        <div class="notification session">
+          <div class="icon">🎤</div>
+          <div class="notification-content">
+            <h3>Alumni Session: Career in Data Science</h3>
+            <p>Join us for an exclusive session by <b>Rahul Sharma (Batch 2015)</b> on Data Science career paths and opportunities.</p>
+            <time>Scheduled: 15 Sept, 2025 – 5:00 PM</time>
+          </div>
+        </div>
+        <!-- Another Alumni Session -->
+        <div class="notification session">
+          <div class="icon">📢</div>
+          <div class="notification-content">
+            <h3>Webinar: Cracking Product Management Interviews</h3>
+            <p>Alumnus <b>Neha Verma (Batch 2012)</b> shares her journey into Product Management at Google.</p>
+            <time>Scheduled: 20 Sept, 2025 – 7:00 PM</time>
+          </div>
+        </div>
+        <!-- General Update -->
+        <div class="notification general">
+          <div class="icon">ℹ️</div>
+          <div class="notification-content">
+            <h3>Placement Portal Update</h3>
+            <p>The placement portal has been updated with new internship opportunities for final-year students.</p>
+            <time>Posted: 9 Sept, 2025</time>
+          </div>
+        </div>
+        <!-- Another General Notification -->
+        <div class="notification general">
+          <div class="icon">✅</div>
+          <div class="notification-content">
+            <h3>Profile Verification Successful</h3>
+            <p>Your alumni profile has been successfully verified. You can now access all alumni-only events.</p>
+            <time>Posted: 8 Sept, 2025</time>
+          </div>
+        </div>
+      </div>
+  </main>
+  <footer id="contact">
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p>Email: contact@connect.com</p>
+        <p>Phone: +123 456 7890</p>
+      </div>
+      <div class="footer-section" id="about">
+        <h4>About Us</h4>
+        <p>Connect is focused on connecting opportunities with talent.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Help Center</a>
+      </div>
+      <div class="footer-section">
+        <p>&copy; 2025 Connect. All rights reserved.</p>
+      </div>
+  </footer>
+  <script src="https://kit.fontawesome.com/18816f1d95.js" crossorigin="anonymous"></script>
+</body>
+</html>

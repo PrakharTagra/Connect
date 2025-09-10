@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Messages - Connect</title>
+  <link rel="stylesheet" href="/static/assets/index.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f2f5;
+      display: flex;
+      height: 100vh;
+    }
+    .Login{
+        display: none;
+    }
+    .messages-container {
+      display: flex;
+      width: 100%;
+      height: 88%;
+      padding-top: 12vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 280px;
+      background: #ffffff;
+      border-right: 1px solid #ddd;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .sidebar h3 {
+      margin: 0;
+      padding: 13.6px;
+      background: #004466;
+      color: #fff;
+      font-size: 18px;
+    }
+
+    .alumni-list {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .alumni-item {
+      padding: 14px 16px;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
+      transition: background 0.2s;
+    }
+    .alumni-item:hover {
+      background: #f0f7fa;
+    }
+    .alumni-item.active {
+      background: #dff1f7;
+      font-weight: 600;
+    }
+
+    /* Chat Area */
+    .chat-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: #eaf1f4;
+    }
+
+    .chat-header {
+      padding: 15px;
+      background: #004466;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .chat-body {
+      flex: 1;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow-y: auto;
+    }
+
+    .msg {
+      max-width: 75%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .msg.alumni {
+      align-self: flex-start;
+      background: #ffffff;
+      border: 1px solid #d0d9dc;
+    }
+    .msg.user {
+      align-self: flex-end;
+      background: #004466;
+      color: #fff;
+    }
+
+    .chat-footer {
+      display: flex;
+      padding: 12px;
+      border-top: 1px solid #ddd;
+      background: #f9f9f9;
+    }
+    .chat-footer input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      outline: none;
+      font-size: 14px;
+    }
+    .chat-footer button {
+      margin-left: 10px;
+      padding: 10px 16px;
+      border-radius: 20px;
+      border: none;
+      background: #004466;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .chat-footer button:hover {
+      background: #006699;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-section">
+    <div class="nav-logo">
+      <img src="../static/assets/Images/Logo.png" alt="Logo" class="connect-logo"/>
+    </div>
+    <div class="nav-container">
+      <div class="nav-links">
+          <a href="{{ url_for('index') }}">
+            <div class="home i">
+              <div><i class="fa-solid fa-house"></i></div>
+              <div class="htext">Home</div>
+            </div>
+          </a>
+          <a href="{{ url_for('alumnisearch') }}">
+            <div class="search i">
+              <div><i class="fa-solid fa-magnifying-glass"></i></div>
+              <div class="htext">Search</div>
+            </div>
+          </a>
+          <a href="{{ url_for('connections') }}">
+            <div class="connections i">
+              <div><i class="fa-solid fa-user-group"></i></div>
+              <div class="htext">Connections</div>
+            </div>
+          </a>
+          <a href="{{ url_for('noti') }}">
+            <div class="noti i">
+              <div><i class="fa-solid fa-bell"></i></div>
+              <div class="htext">Notifications</div>
+            </div>
+          </a>
+          <a href="{{ url_for('messages') }}">
+            <div class="msg i">
+              <div><i class="fa-solid fa-comment"></i></div>
+              <div class="htext">Messages</div>
+            </div>
+          </a>
+      </div>
+      <div class="nav-buttons">
+        <button class="Premium">
+          <img src="../static/assets/Images/premium-icon.png" alt="Crown" class="crown-icon">
+          Premium
+        </button>
+        <a href="../static/assets/reg.html"><button class="Login">Login/Signup</button></a>
+      </div>
+    </div>
+  </nav>
+    </header>
+  <div class="messages-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h3>Alumni Chats</h3>
+      <div class="alumni-list" id="alumniList">
+        <div class="alumni-item active" onclick="openChat('Rahul Sharma')">Rahul Sharma</div>
+        <div class="alumni-item" onclick="openChat('Priya Verma')">Priya Verma</div>
+        <div class="alumni-item" onclick="openChat('Amit Patel')">Amit Patel</div>
+        <div class="alumni-item" onclick="openChat('Neha Singh')">Neha Singh</div>
+      </div>
+    </div>
+
+    <!-- Chat Area -->
+    <div class="chat-area">
+      <div class="chat-header" id="chatHeader">Chat with Rahul Sharma</div>
+      <div class="chat-body" id="chatBody">
+        <div class="msg alumni">Hello! How are you doing?</div>
+        <div class="msg user">Hi Rahul! I'm doing well, thank you.</div>
+        <div class="msg alumni">Great! Are you preparing for placements?</div>
+        <div class="msg user">Yes, I wanted to ask you some tips regarding interviews.</div>
+      </div>
+      <div class="chat-footer">
+        <input id="msgInput" type="text" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const alumniChats = {
+      "Rahul Sharma": [
+        { sender: "alumni", text: "Hello! How are you doing?" },
+        { sender: "user", text: "Hi Rahul! I'm doing well, thank you." },
+        { sender: "alumni", text: "Great! Are you preparing for placements?" },
+        { sender: "user", text: "Yes, I wanted to ask you some tips regarding interviews." }
+      ],
+      "Priya Verma": [
+        { sender: "alumni", text: "Hi! How is your project going?" },
+        { sender: "user", text: "It’s going well! I’ll show you my progress soon." }
+      ],
+      "Amit Patel": [
+        { sender: "alumni", text: "Did you attend the alumni meet last week?" },
+        { sender: "user", text: "Yes sir, it was a great experience!" }
+      ],
+      "Neha Singh": [
+        { sender: "alumni", text: "Hello! Need any guidance on internships?" },
+        { sender: "user", text: "Yes, please! I'm exploring marketing internships." }
+      ]
+    };
+
+    let currentChat = "Rahul Sharma";
+
+    function openChat(name) {
+      currentChat = name;
+
+      // update sidebar active state
+      document.querySelectorAll(".alumni-item").forEach(el => {
+        el.classList.toggle("active", el.textContent === name);
+      });
+
+      // update header
+      document.getElementById("chatHeader").textContent = "Chat with " + name;
+
+      // update body
+      const chatBody = document.getElementById("chatBody");
+      chatBody.innerHTML = "";
+      alumniChats[name].forEach(msg => {
+        const div = document.createElement("div");
+        div.className = "msg " + msg.sender;
+        div.textContent = msg.text;
+        chatBody.appendChild(div);
+      });
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function sendMessage() {
+      const input = document.getElementById("msgInput");
+      const text = input.value.trim();
+      if (!text) return;
+
+      alumniChats[currentChat].push({ sender: "user", text });
+
+      const chatBody = document.getElementById("chatBody");
+      const newMsg = document.createElement("div");
+      newMsg.className = "msg user";
+      newMsg.textContent = text;
+      chatBody.appendChild(newMsg);
+
+      input.value = "";
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+  </script>
+  <script src="https://kit.fontawesome.com/18816f1d95.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -115,6 +115,21 @@ def api_chat():
     reply = query_gemini(prompt)
     reply = clean_reply(reply)
     return jsonify({"reply": reply})
+@app.route("/noti")
+def noti():
+    return render_template("noti.html")
+
+@app.route("/connections")
+def connections():
+    """
+    Render the connections page showing all alumni,
+    same layout as alumni search.
+    """
+    cards = df.to_dict(orient="records")
+    return render_template("connections.html", cards=cards)
+@app.route("/messages")
+def messages():
+    return render_template("messages.html")
 
 @app.route("/api/recommend", methods=["POST"])
 def api_recommend():
