@@ -18,7 +18,7 @@
 </head>
 <body>
   <header>
-    <h1>{{ alum.Name }}</h1>
+    <h1>{{ alum.Name }} {{ get_domain_emoji(alum.Domain) }}</h1>
     <p>{{ alum.Current_Position }} | Grad Year: {{ alum.Graduation_Year }} | Exp: {{ alum.Years_of_Experience }} yrs</p>
   </header>
   <div class="container">
@@ -58,7 +58,7 @@
         body: JSON.stringify({message: text, profile_id: {{ alum.id }}})
       });
       let data = await resp.json();
-      chat.innerHTML += `<div><b>Lynq:</b> ${data.reply}</div>`;
+      chat.innerHTML += `<div><b>Bot:</b> ${data.reply}</div>`;
       chat.scrollTop = chat.scrollHeight;
     }
   </script>
