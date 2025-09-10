@@ -17,7 +17,7 @@ CSV_PATH = "alumni_dataset_20.csv"
 if not os.path.exists(CSV_PATH):
     raise FileNotFoundError(f"{CSV_PATH} not found!")
 
-df = pd.read_csv(CSV_PATH)
+df = pd.read_csv("alumni_dataset_20.csv")
 required_cols = ["Name", "Domain", "Projects", "Skills", "Achievements", "Current_Position"]
 for col in required_cols:
     if col not in df.columns:
@@ -52,12 +52,12 @@ def clean_reply(text):
 
 @app.route("/")
 def index():
-    cards = df.sample(min(12, len(df))).to_dict(orient="records")
+    cards = df.to_dict(orient="records")
     return render_template("index.html", cards=cards)
 
 @app.route("/alumnisearch")
 def alumnisearch():
-    cards = df.sample(min(12, len(df))).to_dict(orient="records")
+    cards = df.to_dict(orient="records")
     return render_template("alumnisearch.html", cards=cards)
 
 @app.route("/profile/<int:pid>")
