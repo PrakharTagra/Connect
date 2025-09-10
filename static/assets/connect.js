@@ -71,3 +71,37 @@ ct.addEventListener("click", () => {
     chat.style.display = "block";
   }, 500);
 });
+function loadProfile(){
+      const user = JSON.parse(localStorage.getItem("user") || "null");
+      if (user) {
+        document.getElementById("profileName").textContent = user.name || "User";
+        document.getElementById("profileEmail").textContent = user.email || "";
+        document.getElementById("profileRole").textContent = user.role ? user.role : "";
+        document.getElementById("profileCollege").textContent = user.college ? user.college : "";
+      } else {
+        document.getElementById("profileName").textContent = "Guest";
+        document.getElementById("profileEmail").textContent = "Not logged in";
+        document.getElementById("profileRole").textContent = "";
+        document.getElementById("profileCollege").textContent = "";
+      }
+    }
+
+    document.getElementById("logoutBtn").addEventListener("click", function(){
+      localStorage.removeItem("user");
+      // go back to login page
+      window.location.href = "login.html";
+    });
+
+    loadProfile();
+let div1=document.querySelector(".div1")
+let profile=document.querySelector(".profile-card");
+let login=document.querySelector(".Login")
+window.addEventListener("DOMContentLoaded", function () {
+    const user = JSON.parse(localStorage.getItem("user") || "null");
+
+    if (user) {
+      div1.style.display="none";
+      profile.style.display="block"
+      login.style.display="none"
+    }
+  });

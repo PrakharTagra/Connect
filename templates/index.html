@@ -68,69 +68,33 @@
   <main>
     <div class="heromain">
       <div class="heroleft">
-        <div class="div3">
-          <div style="border: 1px solid #E7ECEB;box-sizing: border-box;border-radius: 0px 0px 20px 20px;margin-top: -8px;max-width: 100%;padding: 12px;">
-                <div style="display: flex; align-items: flex-start; padding: 12px 0px;">
-                    <img src="https://d26pkxyw9vw39t.cloudfront.net/assets/us_landing/products/pointer-c9cedcfef6fb8f2c607a54dea1901b11cef17b350752dafec02e9190d36bf243.svg" alt="pointer image" style="padding: 2px 12px 0px 0px">
-                    <span>Foster Alumni <br>Engagement</span>
-                </div>
-                <div style="display: flex; align-items: flex-start; padding: 12px 0px;">
-                    <img src="https://d26pkxyw9vw39t.cloudfront.net/assets/us_landing/products/pointer-c9cedcfef6fb8f2c607a54dea1901b11cef17b350752dafec02e9190d36bf243.svg" alt="pointer image" style="padding: 2px 12px 0px 0px">
-                    <span>Updated Alumni <br>Directory</span>
-                </div>
-                <div style="display: flex; align-items: flex-start; padding: 12px 0px;">
-                    <img src="https://d26pkxyw9vw39t.cloudfront.net/assets/us_landing/products/pointer-c9cedcfef6fb8f2c607a54dea1901b11cef17b350752dafec02e9190d36bf243.svg" alt="pointer image" style="padding: 2px 12px 0px 0px">
-                    <span>Spread Job Opportunities &amp; Access to Mentorship</span>
-                </div>
-                <div style="display: flex; align-items: flex-start; padding: 12px 0px;">
-                    <img src="https://d26pkxyw9vw39t.cloudfront.net/assets/us_landing/products/pointer-c9cedcfef6fb8f2c607a54dea1901b11cef17b350752dafec02e9190d36bf243.svg" alt="pointer image" style="padding: 2px 12px 0px 0px">
-                    <span>Raise Donations, Create Events, Connect Through Groups</span>
-                </div>
-              </div>
-        </div>
         <div class="div1">
-          <div class="artdeco-card overflow-hidden p4 mb2">
-      <ul class="feed-left-nav-common-module__widgets">
-        <li class="list-style-none">
-          <a href="/my-items/" id="ember249" class="ember-view feed-left-nav-common-module__link">
-            <p class="t-12 t-black t-bold v-align-middle display-flex">
-              <svg role="none" aria-hidden="true" class="mr2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" data-supported-dps="16x16" data-test-icon="bookmark-fill-small">
-<!---->    
-    <use href="#bookmark-fill-small" width="16" height="16"></use>
-</svg>
-
-              <span>
-                Saved items
-              </span>
-            </p>
-          </a>
-        </li>
-        <li class="list-style-none mt4">
-          <a class="oxMbJNUmKXxmzAnSYiWfNzvRkeFXMmwFzFDU  feed-left-nav-common-module__link" href="https://www.linkedin.com/groups" data-test-app-aware-link="">
-            <p class="t-12 t-black t-bold v-align-middle display-flex">
-              <svg role="none" aria-hidden="true" class="mr2 flex-shrink-zero" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" data-supported-dps="16x16" data-test-icon="group-small">
-<!---->    
-    <use href="#group-small" width="16" height="16"></use>
-</svg>
-
-              <span>Groups</span>
-            </p>
-          </a>
-        </li>
-        <li class="list-style-none mt4">
-          <a class="oxMbJNUmKXxmzAnSYiWfNzvRkeFXMmwFzFDU  feed-left-nav-common-module__link" href="https://www.linkedin.com/mynetwork/network-manager/newsletters" data-test-app-aware-link="">
-            <p class="t-12 t-black t-bold v-align-middle display-flex">
-              <svg role="none" aria-hidden="true" class="mr2 flex-shrink-zero" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" data-supported-dps="16x16" data-test-icon="newspaper-small">
-<!---->    
-    <use href="#newspaper-small" width="16" height="16"></use>
-</svg>
-
-              <span>Events</span>
-            </p>
-          </a>
-        </li>
-      </ul>
-    </div>
+          <div class="pre-login-div">
+          <div class="pre-login-content">
+            <i class="fa-solid fa-user"></i>
+            <h4>Welcome!</h4>
+            <p style="font-size: 0.75rem;">Log in to access your profile and alumni network.</p>
+            <p style="font-size: 0.7rem; color: #555;">Connect with alumni & explore premium features.</p>
+            <a href="../static/assets/reg.html"><button class="login-btn">Log In / Sign Up</button></a>
+          </div>
+        </div>
+        </div>
+        <div class="profile-card" id="profileCard">
+          <h4 id="profileName">Guest</h4>
+          <p id="profileEmail">Not logged in</p>
+          <p id="profileRole"></p>
+          <p id="profileCollege" style="font-size:12px;color:#777"></p>
+          <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+        <div class="premium-div">
+          <h3>Premium Benefits</h3>
+            <ul>
+              <li>24-hour doubt solving sessions</li>
+              <li>Real-time doubt solving assistance</li>
+              <li>Chance to meet successful alumni</li>
+              <li>Access to alumni meets & networking</li>
+            </ul>
+            <button class="premium-btn">Enroll for Premium</button>
         </div>
       </div>
       <div class="herocenter">
@@ -225,22 +189,31 @@
         </div>
       </div>
       <div class="heroright">
-        <div class="div1"></div>
-        <div class="div4" style="height: 40vh; width: 16vw; border: 1px solid #E7ECEB;; box-sizing: border-box; background-color: #fff; display: flex; flex-direction: column; justify-content: space-evenly;">
-    <ul style="list-style-type: disc; margin: 0; font-size: 0.95rem; line-height: 1.2;">
-      <h5 style="font-size: 1.2rem;margin: 0;margin-bottom: 10%;margin-right: 10%;margin-left: -10%;">Know About Lynq</h5>
-        <li>Instant insights on alumni domains and skills.</li>
-        <li>Personalized alumni recommendations.</li>
-        <li>Seamless alumni search by expertise.</li>
-        <li>Quick chat for alumni connections.</li>
-    </ul>
-</div>
-
-
-
-        <button class="chat">
-          Chat With Lynq
-        </button>
+        <div class="div3">
+          <div class="lynq">
+            <div class="lhead">Know About Lynq</div>
+            <div class="ldata">
+              <div class="l">Lynq is an AI-powered chatbot for alumni networking.</div>
+              <div class="l">It provides personalized alumni recommendations.</div>
+              <div class="l">Users can quickly search alumni by skills and domains.</div>
+              <div class="l">Lynq helps foster connections and engagement across your website.</div>
+            </div>
+            <button class="chat">
+              Chat With Lynq
+            </button>
+          </div>
+        </div>
+        <div class="alumni-spotlight">
+          <div class="asp-head">Alumni Spotlight</div>
+          <div class="asp-body">
+            <img src="../static/assets/Images/avatar3.png" alt="alumni photo" class="asp-img">
+            <div class="asp-info">
+              <div class="asp-name">Rohit Sharma</div>
+              <div class="asp-detail">Software Engineer, Infosys</div>
+              <div class="asp-achievement">Mentored 200+ students</div>
+            </div>
+          </div>
+        </div>
         <div id="chat-container">
         <div class="section">
           <div class="cbox">

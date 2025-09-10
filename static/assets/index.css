@@ -19,6 +19,7 @@
         padding: 0;
         box-sizing: border-box;
         background-color: #f5f5f5;
+        font-family: "Segoe UI", sans-serif;
     }
     main{
         padding-top: 12vh;
@@ -235,8 +236,9 @@
         width: 60vw;
     }
     .abouthead,.domainhead,.visionhead{
-        font-size: 3rem;
+        font-size: 2rem;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 2%;
     }
     .feature-section{
         text-align: center;
@@ -288,10 +290,11 @@
         width: 20vw;
         padding: 3vw;
         height: 30vh;
-        margin: 2vw;
         border-radius: 20px;
         background-color: white;
         box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        margin-left: 2.2vw;
+        margin-bottom: 2vh;
     }
     .card img{
         width: 5vw;
@@ -304,19 +307,8 @@
         border-radius: 20px;
         padding: 2%;
     }
-    .div1{
-        height: 25vh;
-        border-radius: 20px;
-        background-color: white;
-        width: 16vw;
-        margin: 5%;
-    }
-    .div2{
-        height: 70vh;
-        border-radius: 20px;
-        background-color: white;
-        width: 16vw;
-        margin: 5%;
+    .visionhead{
+        margin: 0;
     }
     footer {
       background-color: #2e2e2e;
@@ -431,81 +423,243 @@
     cursor: pointer;
 }
 .chat{
-    margin-top: 4.5vh;
+    margin-top: 2vh;
+}
+.div1{
+    height: 25vh;
+    border-radius: 20px;
+    background-color: white;
+    width: 16vw;
+    margin: 5%;
 }
 .div3{
-    height: 50vh;
+    height: 60vh;
     border-radius: 20px;
     background-color: white;
     width: 16vw;
     margin: 5%;
 }
-.div4{
-    height: 43vh;
-    border-radius: 20px;
-    background-color: white;
-    width: 16vw;
-    margin: 5%;
-}
-.div1,.div2,.div3,.div4{
+.div1,.div2,.div3{
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    background-color: #f0f4f8;
 }
-/* Container card */
-.artdeco-card {
-    background-color: #fff;
-    border-radius: 8px;
+.lynq {
+  width: 16vw;
+  height: 60vh;
+  background: #f5f7fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  font-family: "Segoe UI", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centers content vertically */
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.lhead {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #182848;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.ldata {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 0.85rem;
+  color: #333;
+  line-height: 1.4;
+}
+
+.l {
+  padding-left: 18px;
+  position: relative;
+}
+
+.l::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #4b6cb7;
+  font-size: 1rem;
+}
+.premium-div {
+    width: 16vw;
+    height: 54vh;
+    background-color: #f0f4f8; /* light background */
+    border-radius: 15px;
+    padding: 16px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items:center;
+    font-family: "Segoe UI", sans-serif;
+}
+
+.premium-div h3 {
+    margin: 0 0 12px 0;
+    font-size: 1.2rem;
+    color: #182848;
+    margin-top: 5%;
+}
+
+.premium-div ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.premium-div ul li {
+    margin-bottom: 10px;
+}
+.premium-btn {
+    width: 100%;
+    padding: 10px 0;
+    background-color: #4b6cb7;
+    color: white;
+    font-weight: bold;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.premium-btn:hover {
+    background-color: #182848;
+    transform: translateY(-2px);
+}
+.pre-login-div {
+    width: 16vw;
+    height: 25vh;
+    background-color: #f5f7fa;
+    border-radius: 12px;
+    padding: 8px;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    padding: 1rem;
-    margin-bottom: 1rem;
 }
 
-/* Remove default list styles */
-.feed-left-nav-common-module__widgets {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.pre-login-content {
+    text-align: center;
 }
 
-/* List items */
-.feed-left-nav-common-module__widgets li {
-    margin-bottom: 1rem;
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-bottom: 6px;
 }
 
-/* Links styling */
-.feed-left-nav-common-module__link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #000; /* Default text color */
-    transition: all 0.2s ease;
-    padding: 0.4rem 0.2rem;
+.pre-login-content h4 {
+    margin: 3px 0;
+    font-size: 0.9rem;
+}
+
+.pre-login-content p {
+    margin: 2px 0;
+}
+
+.login-btn {
+    margin-top: 6px;
+    padding: 4px 10px;
+    border: none;
     border-radius: 6px;
-}
-.feed-left-nav-common-module__link:hover {
-    background-color: #f0f0f0;
-    color: #0073b1; /* LinkedIn blue */
-}
-.feed-left-nav-common-module__link p {
-    display: flex;
-    align-items: center;
-    margin: 0;
-    font-size: 0.85rem;
-    font-weight: 600;
-    gap: 0.5rem;
-}
-.feed-left-nav-common-module__link span {
-    vertical-align: middle;
-}
-.feed-left-nav-common-module__widgets li.mt4 {
-    margin-top: 1rem;
+    background-color: #4b6cb7;
+    color: white;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .artdeco-card {
-        padding: 0.8rem;
-    }
-    .feed-left-nav-common-module__link p {
-        font-size: 0.8rem;
-    }
+.login-btn:hover {
+    background-color: #182848;
 }
+.alumni-spotlight {
+  width: 16vw;
+  height: 20vh;
+  background: #fefefe;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-family: "Segoe UI", sans-serif;
+  padding: 12px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.asp-head {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #182848;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.asp-body {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.asp-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #4b6cb7;
+}
+
+.asp-info {
+  flex: 1;
+}
+
+.asp-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.asp-detail {
+  font-size: 0.7rem;
+  color: #555;
+}
+
+.asp-achievement {
+  font-size: 0.65rem;
+  color: #4b6cb7;
+  font-weight: 500;
+  margin-top: 2px;
+}
+.profile-card{
+      width:13vw;
+      height:25vh;
+      background:#fff;
+      border-radius:12px;
+      box-shadow:0 6px 16px rgba(0,0,0,0.1);
+      padding:16px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      display: none;
+      margin-bottom: 2vh;
+    }
+    .profile-card h4{margin:0;font-size:18px;color:#222;}
+    .profile-card p{margin:6px 0;color:#555;font-size:13px;}
+    .logout-btn{
+      margin-top:16px;padding:8px 12px;border:none;background:#ff6b6b;color:#fff;border-radius:8px;cursor:pointer;
+    }
