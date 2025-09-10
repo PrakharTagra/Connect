@@ -31,10 +31,12 @@
     </div>
     <div class="nav-container">
       <div class="nav-links">
-          <div class="home i">
-            <div><i class="fa-solid fa-house"></i></div>
-            <div class="htext">Home</div>
-          </div>
+          <a href="{{ url_for('index') }}">
+            <div class="home i">
+              <div><i class="fa-solid fa-house"></i></div>
+              <div class="htext">Home</div>
+            </div>
+          </a>
           <a href="{{ url_for('alumnisearch') }}">
             <div class="search i">
               <div><i class="fa-solid fa-magnifying-glass"></i></div>
@@ -162,17 +164,25 @@
         </div>
       </div>
       <div class="heroright">
-        <div class="div1"></div>
+        <div class="div2"></div>
+        <button class="chat">
+          Chat With Lynq
+        </button>
         <div id="chat-container">
         <div class="section">
-          <h2>LYNQ</h2>
+          <div class="cbox">
+            <div>
+              <h2>LYNQ</h2>
+            </div>
+            <div class="ct">&#x2716</div>
+          </div>
           <div id="chat" class="chat-box"></div>
             <div class="chat-input">
               <input id="msg" placeholder="Ask something...">
               <button onclick="sendMsg()">Send</button>
             </div>
+          </div>
         </div>
-</div>
         </div>
       </div>
     </div>
