@@ -309,15 +309,6 @@
         border-radius: 20px;
         background-color: white;
         width: 16vw;
-        border: 1px solid black;
-        margin: 5%;
-    }
-    .div1{
-        height: 25vh;
-        border-radius: 20px;
-        background-color: white;
-        width: 16vw;
-        border: 1px solid black;
         margin: 5%;
     }
     .div2{
@@ -325,7 +316,6 @@
         border-radius: 20px;
         background-color: white;
         width: 16vw;
-        border: 1px solid black;
         margin: 5%;
     }
     footer {
@@ -442,4 +432,80 @@
 }
 .chat{
     margin-top: 4.5vh;
+}
+.div3{
+    height: 50vh;
+    border-radius: 20px;
+    background-color: white;
+    width: 16vw;
+    margin: 5%;
+}
+.div4{
+    height: 43vh;
+    border-radius: 20px;
+    background-color: white;
+    width: 16vw;
+    margin: 5%;
+}
+.div1,.div2,.div3,.div4{
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+/* Container card */
+.artdeco-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Remove default list styles */
+.feed-left-nav-common-module__widgets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* List items */
+.feed-left-nav-common-module__widgets li {
+    margin-bottom: 1rem;
+}
+
+/* Links styling */
+.feed-left-nav-common-module__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000; /* Default text color */
+    transition: all 0.2s ease;
+    padding: 0.4rem 0.2rem;
+    border-radius: 6px;
+}
+.feed-left-nav-common-module__link:hover {
+    background-color: #f0f0f0;
+    color: #0073b1; /* LinkedIn blue */
+}
+.feed-left-nav-common-module__link p {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    gap: 0.5rem;
+}
+.feed-left-nav-common-module__link span {
+    vertical-align: middle;
+}
+.feed-left-nav-common-module__widgets li.mt4 {
+    margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .artdeco-card {
+        padding: 0.8rem;
+    }
+    .feed-left-nav-common-module__link p {
+        font-size: 0.8rem;
+    }
 }
