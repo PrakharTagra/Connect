@@ -20,7 +20,7 @@
 </head>
 <body>
   <header>
-    <h1>🎓 Alumni Search Portal</h1>
+    <h1>Alumni Search Portal</h1>
     <p>Find alumni by name, domain, skills, achievements, year or experience</p>
   </header>
 
@@ -31,11 +31,10 @@
   <div id="results" class="grid">
     {% for r in cards %}
       <div class="card">
-        <h3>{{r.Name}} {{ get_domain_emoji(r.Domain) }}</h3>
+        <h3>{{r.Name}}</h3>
         <p><b>Domain:</b> {{r.Domain}}</p>
         <p><b>Grad Year:</b> {{r.Graduation_Year}}, <b>Exp:</b> {{r.Years_of_Experience}} yrs</p>
         <p><b>Company:</b> {{r.Current_Position}}</p>
-        <p class="badges">{{ achievement_badges(r.Achievements) }}</p>
         <a href="/profile/{{r.id}}">View Profile →</a>
       </div>
     {% endfor %}

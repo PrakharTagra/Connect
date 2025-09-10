@@ -31,27 +31,6 @@ if "Years_of_Experience" not in df.columns:
     df["Years_of_Experience"] = 0
 if "id" not in df.columns:
     df = df.reset_index().rename(columns={"index": "id"})
-
-# ---------------- Emoji Helpers ----------------
-DOMAIN_EMOJI = {"Computer Science": "💻", "CS": "💻", "IT": "💻",
-                "Electronics": "📡", "Mechanical": "⚙️", "Civil": "🏗️",
-                "Biotech": "🧬", "Electrical": "🔌"}
-
-ACHIEV_EMOJI = {"IAS": "🏛️", "Startup": "🚀", "Founder": "🚀",
-                "Patent": "📜", "Published": "📚", "Award": "🏆", "Fellowship": "🎓"}
-
-def get_domain_emoji(domain):
-    for k,v in DOMAIN_EMOJI.items():
-        if k.lower() in domain.lower():
-            return v
-    return "🔧"
-
-def achievement_badges(ach):
-    badges = [v for k,v in ACHIEV_EMOJI.items() if k.lower() in str(ach).lower()]
-    if ach and not badges:
-        badges.append("🌟")
-    return " ".join(badges)
-
 # ---------------- Gemini Query (with retry) ----------------
 @lru_cache(maxsize=128)
 def query_gemini(prompt, max_tokens=200, retries=5, delay=2):
@@ -104,7 +83,6 @@ def api_chat():
     return jsonify({"reply": reply})
 
 # Make helpers available in Jinja templates
-app.jinja_env.globals.update(get_domain_emoji=get_domain_emoji, achievement_badges=achievement_badges)
 @app.route("/alumnisearch")
 def alumnisearch():
     # Show some sample alumni cards initially
@@ -151,11 +129,9 @@ def api_search():
             "id": int(r["id"]),
             "name": r["Name"],
             "domain": r["Domain"],
-            "domain_emoji": get_domain_emoji(r["Domain"]),
             "grad_year": r["Graduation_Year"],
             "exp": r["Years_of_Experience"],
             "company": r["Current_Position"],
-            "ach_badges": achievement_badges(r["Achievements"]),
             "projects": r["Projects"]
         })
     return jsonify({"results": items})
