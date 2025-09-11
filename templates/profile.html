@@ -199,7 +199,7 @@
         {% for rec in recommended %}
         <div class="grid-card">
           <a href="{{ url_for('profile_page', pid=rec.id) }}">
-            <img src="{{ url_for('static', filename='assets/images/Profile_Photo/default.jpg.jpg') }}" alt="{{ rec.Name }}">
+            <img src="{{ url_for('static', filename='assets/Images/Profile_Photo/default.jpg.jpg') }}" alt="{{ rec.Name }}">
             <p>{{ rec.Name }}</p>
             <p style="font-size:0.8rem;color:gray;">{{ rec.Current_Position }}</p>
           </a>
