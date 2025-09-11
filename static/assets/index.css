@@ -663,3 +663,180 @@ footer .footer-section:last-child {
     .logout-btn{
       margin-top:16px;padding:8px 12px;border:none;background:#ff6b6b;color:#fff;border-radius:8px;cursor:pointer;
     }
+/* ---------- Tablet (≤ 1024px) ---------- */
+@media screen and (max-width: 1024px) {
+  .heromain {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .heroleft, .heroright {
+    width: 90%;
+    position: relative;
+    top: 0;
+    margin: 2vh 0;
+  }
+  .herocenter {
+    width: 95%;
+    padding: 2%;
+  }
+
+  .card, .about-box, .vision, 
+  .premium-div, .pre-login-div, 
+  .lynq, .alumni-spotlight, .profile-card {
+    width: 80%;
+    margin: 2vh auto;
+    height: auto;
+  }
+
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  footer .footer-section {
+    padding-left: 0;
+    margin: 10px 0;
+  }
+}
+
+/* ---------- Mobile (≤ 600px) ---------- */
+@media screen and (max-width: 600px) {
+  .nav-section {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+    gap: 1rem;
+    font-size: 0.6rem;
+  }
+  .nav-logo {
+    width: 30%;
+    justify-content: center;
+  }
+  .nav-container, .nav-links, .nav-buttons {
+    width: 100%;
+    gap: 0.5rem;
+    padding: 0;
+    font-size: 0.6rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .heromain {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    padding-top: 17vh;
+  }
+  .heroleft, .heroright, .herocenter {
+    width: 95%;
+    margin: 1rem auto;
+    top: 0;
+    position: relative;
+  }
+.herocenter{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: -6.5%;
+}
+.about-grid{
+    display: flex;
+    gap: 15vw;
+    margin-left: 0;
+}
+.about-box{
+    height: 20vh;
+    width: 100%;
+    margin-left: 0;
+}
+.about-box:hover{
+    height: 20vh;
+    width: 100%;
+    margin-left: 0;
+    transform: scale(1);
+}
+.connect-logo{
+    height: 10vh;
+    width: 55vw;
+}
+.about1,.about2{
+    gap: 1vw;
+    display: flex;
+    flex-direction: column;
+}
+  .vision, .pre-login-div, 
+  .lynq, .alumni-spotlight, .profile-card {
+    width: 95%;
+    margin: 1rem auto;
+    padding: 1rem;
+    height: auto;
+  }
+  .card{
+    height: 40vh;
+    width: 100%;
+  }
+  .card:hover{
+    height: 40vh;
+    width: 100%;
+    transform: scale(1);
+    transform: translateY(0);
+  }
+  .abouthead, .domainhead, .visionhead {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .lynq{
+    width: 90vw;
+  }
+  .div3{
+    width: 90vw;
+    height: auto;
+  }
+  @media (hover: none) {
+  a:hover,
+  button:hover,
+  .card:hover,
+  .about-box:hover,
+  .Premium:hover,
+  .chat:hover,
+  .Login:hover {
+    transform: none !important;
+    color: inherit !important;
+    background: inherit !important;
+    box-shadow: none !important;
+  }
+}
+  .vision{
+    margin-left: 5%;
+  }
+  .ldata{
+    width: 90vw;
+  }
+  .feature1,.feature2{
+    display: flex;
+    gap: 2vh;
+  }
+  .feature-content{
+    display: flex;
+    gap: 10vw;
+    margin-left: -5vw;
+  }
+  footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+    width: 96vw;
+  }
+  footer .footer-section {
+    margin: 0px 0;
+    padding-left: 0;
+    text-align: center;
+    width: 96vw;
+  }
+}
